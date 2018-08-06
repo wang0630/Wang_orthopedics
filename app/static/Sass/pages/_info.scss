@@ -1,0 +1,55 @@
+.info{
+  &__infos{
+    @include grid-child( unquote("2/3"),full-start/col-end 4);
+    @include grid-parent(repeat(3,15rem),minmax(min-content,max-content));
+    @include respond(break-alpha){
+      @include grid-parent(repeat(3,8rem),minmax(min-content,max-content));
+    }
+    @include respond(break-beta){
+      grid-column: full-start/full-end;
+    };
+    padding: 5rem;
+    background-color: $color-secondary;
+    color:#fff;
+  }
+
+  &__items{
+    display: flex;
+    align-items: center;
+  }
+  
+  &__pics{
+    background:{
+      position: center;
+      size: cover;
+    }
+    height:3rem;
+    width:3rem;
+    margin-right:1rem;
+    &--location{
+      background-image: url(#{$img-path-icon}/icon-location.png);
+    }
+    &--tel{
+      background-image: url(#{$img-path-icon}/icon-tel.png);
+    }
+    &--list{
+      background-image: url(#{$img-path-icon}/icon-list.png);
+    }
+    &--fb{
+      background-image: url(#{$img-path-icon}/icon-fb.png);
+    }
+  }
+
+  &__detail{
+    font-size:3.5rem;
+    line-height: 3rem;
+  }
+
+  &__map{
+    grid-column: col-start 5 / full-end;
+    @include respond(break-beta){
+      grid-column: full-start/full-end;
+      height: 35rem;;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+.target{
+  display: grid;
+  grid-column:full-start/full-end;
+  // specify the auto rows for unknown number of objects
+  grid-auto-rows: min-content;
+  // always 45% of parent container
+  // to maintain 2-column layout
+  // but if 45% of parent container is less than 15rem
+  // then no less than 15rem
+  grid-template-columns: repeat(auto-fit,minmax(15rem,45%));
+  grid-gap:3rem;
+  background-color: $color-green-light;
+  padding:8rem;
+  @include respond(break-theata){
+    justify-content: center;
+  }
+  &__card{
+    background-color: #fff;
+    text-align: center;
+    font-size: 3.3rem;
+    padding:1.5rem;
+  }
+}

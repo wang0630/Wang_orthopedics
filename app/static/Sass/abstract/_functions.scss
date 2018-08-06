@@ -1,0 +1,6 @@
+@function calc-em-media($original){
+  // em based on 16px confirmed
+  // 1em = 16px
+  @return ($original/16) + em ;
+}
+

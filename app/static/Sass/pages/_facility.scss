@@ -1,0 +1,123 @@
+.facility{
+  &__article{
+    padding: 5rem;
+    grid-column:full-start/col-start 5;
+    display:grid;
+    grid-template-rows: 1fr 3fr 1fr 3fr;
+    background-color: #cf9f64;
+    @include respond(break-alpha){
+      grid-column: full-start/full-end;
+    }
+    &__heading{
+      color:#fff;
+      font-size:4rem;
+      align-self: center;
+      &--2{
+        color:#fff;
+        font-size:3.5rem;
+        align-self: center;
+      }
+    }
+    &__list{
+      font-weight: 300;
+      color:#fff;
+      font-size:3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    &__item{
+      &::before{
+      content:"";
+      display: inline-block;
+      height: 1.5rem;
+      width: 1.5rem;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      margin-right:1.5rem;
+      }
+    }
+    &__time{
+      color:#fff;
+      font-size:3rem;
+      @include flex-hor();
+      &--1{
+        margin-right:2rem;
+        li:last-child{
+          font-weight: 300;
+          color:rgb(172, 37, 37);
+        }
+      }
+      li:not(:last-child){
+        margin-bottom:2rem;
+      }
+      li:first-child{
+        font-size:3.5rem;
+        margin-bottom:2.5rem;
+      }
+    }
+  }
+  &__gallary{
+    background-color: #fff;
+    padding:1.5rem;
+    display: grid;
+    grid:{
+      column:col-start 5/full-end;
+      template-rows: unquote('repeat(6,[row-start] 1fr [row-end])');
+      template-columns: unquote('repeat(6,[col-start] 1fr [col-end])');
+      gap:1rem;
+    }
+    @include respond(break-alpha){
+      grid-column: full-start/full-end;
+    }
+  }
+
+  &__img{
+    @include dimension();
+    // remove extra little white space
+    display: block;
+    object-fit: cover;
+    &--transform{
+      transform: rotate(90deg);
+    }
+  }
+
+  &__item{
+    &--1{
+      grid-row:1/span 2;
+      grid-column: 1/span 4;
+    }
+
+    &--2{
+      grid-row:1/2;
+      grid-column: 5/7;
+    }
+
+    &--3{
+      grid-row:2/3;
+      grid-column: 5/7;
+    }
+    &--4{
+     grid-row: 3/span 2;
+     grid-column: 1/span 2;
+    }
+    &--5{
+      grid-row:3/span 2;
+      grid-column:3/span 4;
+    }
+    &--6{
+      grid-row: 5/span 2;
+      grid-column:1/span 4;
+    }
+    &--7{
+      grid-row: 5/span 1;
+      grid-column:5/span 2;
+    }
+    &--8{
+      grid-row: 6/ span 1;
+      grid-column:5/span 2;
+    }
+  }
+}

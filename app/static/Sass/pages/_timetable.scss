@@ -1,0 +1,103 @@
+.timetable{
+  height:60rem;
+  padding: 1.5rem;
+  background-color:$color-table-background;
+  color: $color-table-cell;
+  font-size: 2.5rem;
+  font-family: inherit;
+  display: grid;
+  grid:{
+    template-rows: 10rem 4fr;
+    column:full-start/full-end;
+  }
+  // for whole heading 
+  &__heading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__title{
+    flex-grow: 2;
+    text-align: right;
+    color:$color-table-title;
+    font-size:4rem;
+  }
+  // for time group
+  &__times{
+    @include flex-hor($jus:center);
+    flex-grow:1;
+  }
+  &__item{
+    display: flex;
+    align-items: center;
+    &:first-child{
+      margin-right: 1rem;
+    }
+    &__text{
+      margin-left:1rem;
+    }
+  }
+
+  // for time table
+  &__table{
+    display: grid;
+    grid:{
+      row:2/3;
+      template-rows:repeat(4,1fr);
+    }
+  }
+  &__row{
+    display: grid;
+    grid-template-columns: repeat(8,1fr);
+    justify-items: center;
+    align-items: center;
+    // not first child 
+    // &--heading > div:not(:first-child){
+    //   color:$color-table-title;
+    // }
+  }
+  &__cell{
+    transition: all .2s;
+    text-align: center;
+    &--heading{
+      transform: translateY(-11px);
+      word-break: break-word;
+      line-height: 2.2rem;
+    }
+  }
+  &__radiobtn{
+    height:1.5rem;
+    width:1.5rem;
+    border-radius: 50%;
+    margin:0 auto;
+    position: relative;
+    transition: all .2s;
+    cursor: pointer;
+    &--1{
+      background-color: red;
+    }
+    &--2{
+      // aishdaoihaoihfaoihfoaishfaoishfaohsfo
+      // asdfasdasfasdasf
+      background-color:$color-doctor-2;
+    }
+    &--3{
+      margin:0;
+    }
+    // &::after{
+    //   content:"";
+    //   display: block;
+    //   height: 3rem;
+    //   width: 3rem;
+    //   border-radius: 50%;
+    //   position: absolute;
+    //   top:-8.8px;
+    //   left:-8.8px;
+    //   border: 3px solid transparent;
+    //   transition: all .3s;
+    // }
+    // &:hover::after{
+    //   border: 3px solid $color-green-dark;
+    // }
+  }
+}

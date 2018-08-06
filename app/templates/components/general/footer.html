@@ -1,0 +1,10 @@
+<footer class="footer">
+  <nav class="footer__nav">
+      <a href="{{ url_for('home',_anchor='info') }}" class="footer__link footer__link--info">我們在哪裡</a>
+      <a href="{{ url_for('home',_anchor='timetable') }}" class="footer__link footer__link--time">看診時間</a>
+      <a href="{{ url_for('home',_anchor='doctors') }}" class="footer__link footer__link--doctor">醫生團隊</a>
+      <a href='{{ url_for("target") }}' class="footer__link footer__link--target">主治項目</a>
+      <a href="{{ url_for('home',_anchor='PT') }}" class="footer__link footer__link--PT">復健中心</a>
+  </nav>
+  <small class="footer__copyright">&copy; Copyright 2018, 汪骨外科診所</small>
+</footer>

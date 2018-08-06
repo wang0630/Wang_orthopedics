@@ -1,0 +1,74 @@
+.header{
+  background:{
+    image: linear-gradient(rgba(0,0,0, .7),
+                                    rgba(0,0,0,.7)),
+                    url(#{$img-path}/front.jpg);   
+    size: cover;  
+    position: center;
+    attachment: fixed;   
+  }             
+  grid:{
+    row: 1/2;
+    column: full-start/full-end;
+    // min-content  符合圖片即可
+    // 最大只能10rem, 但最小不可以小於內容
+    // 要不然會overflow
+    template-rows: min-content repeat(4,min-content);
+    // always 70% of viewwidth
+    // shrink with viewwidth
+    template-columns: 70vw;
+    row-gap: 2rem;
+  }
+  align-content: center;
+  display: grid;
+  padding:6rem;
+  @include respond(break-alpha){
+    grid-row-gap:1rem; 
+  }
+  &__HI{
+    height: 7rem;
+    width:7rem;
+    border-radius: 50%;
+    align-self: end;
+  }
+  &__text{
+    grid-row: 2/3;
+    color:#fff;
+    font-size:4.5rem;
+    font-weight: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    &--1{
+      font-size: 5rem;
+      color:$color-border;
+      line-height: 3.3rem;
+      align-self: flex-start; // let the container of text shrink
+    }
+    &--2{
+      color:#FFf;
+      font-size:2rem;
+    }
+
+  }
+
+  &__nav{
+    font-size: 3rem;
+    display: grid;
+    justify-items: start;
+    grid-column-gap: .5rem;
+    grid-template-columns: repeat(auto-fit,minmax(5rem,1fr));
+  }
+
+  &__link{
+    color:$color-table-title;
+    padding-bottom: .7rem;
+    text-decoration: none; // remove the line under link
+    border-bottom: 2px solid transparent;
+    transition: all .5s;
+  }
+
+  &__link:hover{
+    border-bottom: 2px solid $color-border;
+  }
+}

@@ -1,0 +1,27 @@
+.footer{
+  padding:5rem;
+  grid-column: full-start/full-end;
+  background-color: rgb(36, 36, 36);
+  &__nav{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    justify-items: center;
+    margin-bottom: 1rem;
+  }
+  &__copyright{
+    display:block;
+    color:#fff;
+    width:max-content;
+    margin:0 auto;
+  }
+  &__link{
+    color:#fff;
+    font-size:2rem;
+    padding: .5rem;
+    transition: all .3s;
+  }
+  &__link:hover{
+    background-color: #fff;
+    color:rgb(36, 36, 36);
+  }
+}

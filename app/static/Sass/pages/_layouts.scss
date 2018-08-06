@@ -1,0 +1,8 @@
+.main{
+  display: grid;
+  grid-template-rows: 80vh repeat(5,min-content);
+  grid-template-columns: unquote("[full-start] minmax(4rem,1fr) [center-start] repeat(8,[col-start] minmax(min-content,14rem) [col-end]) [center-end] minmax(4rem,1fr) [full-end]");
+  @include respond(break-alpha){
+    grid-template-rows: repeat(5,min-content);
+  }
+}
