@@ -64,5 +64,5 @@ $break-theata = calc-em-media(547);
 
 @mixin animation-move-right {
   opacity: 0;
-  animation: moveInRight .85s linear .3s forwards;
+  animation: moveInRight .85s linear .5s forwards;
 }
