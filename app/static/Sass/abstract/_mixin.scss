@@ -56,3 +56,13 @@ $break-theata = calc-em-media(547);
     @media only screen and (max-width: $break-theata){ @content };
   }
 }
+
+@mixin animation-move-down {
+  opacity: 0;
+  animation: moveInDown .85s linear .3s forwards;
+}
+
+@mixin animation-move-right {
+  opacity: 0;
+  animation: moveInRight .85s linear .3s forwards;
+}

@@ -42,7 +42,19 @@
 
   &__detail{
     font-size:3.5rem;
-    line-height: 3rem;
+    color:#fff;
+    padding: 1rem;
+    &--fb{
+      transition: all .3s;
+      &:hover{
+        color:$color-secondary;
+        background-color: #fff;
+      }
+      &:active{
+        color:currentColor;
+        background-color: $color-secondary;
+      }
+    }
   }
 
   &__map{

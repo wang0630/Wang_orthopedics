@@ -30,16 +30,11 @@
     width:7rem;
     border-radius: 50%;
     align-self: end;
+    @include animation-move-down();
   }
   &__text{
-    grid-row: 2/3;
-    color:#fff;
-    font-size:4.5rem;
-    font-weight: inherit;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     &--1{
+      @include animation-move-down();
       font-weight: 400;
       font-size: 5rem;
       color:$color-border;
@@ -47,6 +42,7 @@
       align-self: flex-start; // let the container of text shrink
     }
     &--2{
+      @include animation-move-right();
       color:#FFf;
       font-size:2rem;
     }
@@ -54,7 +50,8 @@
   }
 
   &__nav{
-    margin-top: 1rem;
+    @include animation-move-right();
+    margin-top: .5rem;
     font-size: 2.3rem;
     display: grid;
     align-items: start;
@@ -69,6 +66,7 @@
     text-decoration: none; // remove the line under link
     border-bottom: 2px solid transparent;
     transition: all .5s;
+   
   }
 
   &__link:hover{
