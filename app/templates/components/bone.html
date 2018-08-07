@@ -1,0 +1,8 @@
+<section class="bone">
+{% for img,caption in bonelist %}
+  <figure class="bone__figure">
+    <img src="{{ url_for('static',filename=img) }}" alt="" class="bone__img">
+    <figcaption class="bone__caption"> {{ caption }} </figcaption>
+  </figure>
+{% endfor %}
+</section>

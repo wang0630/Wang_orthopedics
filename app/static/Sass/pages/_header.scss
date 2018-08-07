@@ -13,7 +13,7 @@
     // min-content  符合圖片即可
     // 最大只能10rem, 但最小不可以小於內容
     // 要不然會overflow
-    template-rows: min-content repeat(4,min-content);
+    template-rows: repeat(5,min-content);
     // always 70% of viewwidth
     // shrink with viewwidth
     template-columns: 70vw;
@@ -40,6 +40,7 @@
     flex-direction: column;
     justify-content: center;
     &--1{
+      font-weight: 400;
       font-size: 5rem;
       color:$color-border;
       line-height: 3.3rem;
@@ -53,8 +54,10 @@
   }
 
   &__nav{
-    font-size: 3rem;
+    margin-top: 1rem;
+    font-size: 2.3rem;
     display: grid;
+    align-items: start;
     justify-items: start;
     grid-column-gap: .5rem;
     grid-template-columns: repeat(auto-fit,minmax(5rem,1fr));
