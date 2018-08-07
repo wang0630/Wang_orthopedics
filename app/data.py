@@ -3,6 +3,6 @@ targetList=[u"外傷縫合",u"門診腫瘤手術",u"扳機指微創手術",u"�
 
 PTList=[u"短波",u"熱敷包",u"超音波",u"向量干擾器",u"經皮神經電刺激"]
 
-imglist=['img/PTnurses.jpg','img/nurse.jpg','img/nurses3.jpg','img/record.jpg','img/PT2.JPG','img/nurses2.JPG','img/working.jpg','img/PT.jpg']
+imglist=[('img/PTnurses.jpg',u"汪骨外科的護士們"),('img/nurse.jpg',u"汪骨外科的護士"),('img/nurses3.jpg',u"汪骨外科的護士們"),('img/record.jpg',u"汪骨外科的病例"),('img/PT2.JPG',u"汪骨外科的復健區"),('img/nurses2.JPG',u"汪骨外科的護士們"),('img/working.jpg',u"汪明玉醫師與病患"),('img/PT.JPG',u"汪骨外科的復健區")]
 
 bonelist=[('img/xray.jpg',u'X光機組'),("img/bmm.jpg",u'骨質密度檢測機組')]

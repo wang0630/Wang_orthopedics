@@ -49,6 +49,7 @@
   &__row{
     display: grid;
     grid-template-columns: repeat(8,1fr);
+    grid-column-gap: .5rem;
     justify-items: center;
     align-items: center;
     // not first child 

@@ -23,9 +23,9 @@
 </article>
 
 <div class="facility__gallary">
-  {% for img in imglist %}
+  {% for img,alt in imglist %}
   <figure class="facility__item facility__item--{{ loop.index }}">
-    <img src="{{ url_for('static', filename=img) }}" alt="" class="facility__img">
+    <img src="{{ url_for('static', filename=img) }}" alt="{{ alt }}" class="facility__img">
   </figure>
   {% endfor %}
 </div>

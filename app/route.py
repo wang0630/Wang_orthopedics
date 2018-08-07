@@ -10,15 +10,15 @@ APIkey=app.config.get("APIKEY")
 @app.route("/")
 @app.route("/home")
 def home():
-  return render_template("home.html",PTList=PTList,APIkey=APIkey,imglist=imglist)
+  return render_template("home.html",PTList=PTList,APIkey=APIkey,imglist=imglist,metacontent=u"汪骨外科診所為大北門地區第一間骨外科診所，旨在提供病患最有效的骨外科治療．")
 
 @app.route("/target")
 def target():
-  return render_template("targetpage.html",targetList=targetList)
+  return render_template("targetpage.html",targetList=targetList,metacontent=u"汪骨外科診所的主治項目．") 
 
 @app.route("/boneMassMeasurement")
 def boneMassMeasurement():
-  return render_template("boneMassMeasurement.html",bonelist=bonelist)
+  return render_template("boneMassMeasurement.html",bonelist=bonelist,metacontent=u"汪骨外科診所提供的骨質密度檢測．")
 
 @app.route("/google8029c7599236ab79.html")
 def comfirm():
