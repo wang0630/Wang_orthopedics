@@ -23,7 +23,7 @@
   display: grid;
   padding:6rem;
   @include respond(break-alpha){
-    grid-row-gap:1rem; 
+    grid-row-gap:1.5rem; 
   }
   &__HI{
     height: 7rem;
