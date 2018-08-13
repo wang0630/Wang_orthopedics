@@ -12,6 +12,9 @@
       color:#fff;
       font-size:3.5rem;
       align-self: center;
+      @include respond(break-beta){
+        margin-bottom: 1.5rem;
+      }
     }
     &__list{
       font-weight: 300;
