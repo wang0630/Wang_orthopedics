@@ -22,7 +22,7 @@
     color:$color-table-title;
     font-size:4rem;
     @include respond(break-beta){
-      text-align: center;
+      text-align: left;
     }
   }
   // for time group
