@@ -49,7 +49,21 @@
           font-weight: 300;
           color:rgb(172, 37, 37);
         }
+        li:not(:first-child){
+          @include respond(break-beta){
+            font-size:2rem;
+          }
+        }
       }
+
+      &--2{
+        li:not(:first-child){
+          @include respond(break-beta){
+            font-size:2rem;
+          }
+        }
+      }
+
       li:not(:last-child){
         margin-bottom:2rem;
       }
