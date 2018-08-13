@@ -35,38 +35,34 @@
       margin-right:1.5rem;
       }
     }
+
+    &__timegroup{
+      @include flex-hor();
+    }
+
     &__time{
       color:#fff;
-      font-size:3rem;
-      @include flex-hor();
-      &--1{
+      @include flex-ver();
+      &--red{
         margin-right:2rem;
         // make it red
         li:last-child{
           font-weight: 300;
           color:rgb(172, 37, 37);
         }
-        li:not(:first-child){
-          @include respond(break-beta){
-            font-size:2.5rem;
-          }
-        }
       }
-
-      &--2{
-        li:not(:first-child){
-          @include respond(break-beta){
-            font-size:2rem;
-          }
-        }
+      // for real time description
+      li:not(:first-child){
+        font-size:2.5rem;
       }
-
+      // for overall margin
       li:not(:last-child){
         margin-bottom:2rem;
       }
+      // for weekday heading
       li:first-child{
         font-size:3.5rem;
-        margin-bottom:2.5rem;
+        margin-bottom:3rem;
       }
     }
   }
