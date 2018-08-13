@@ -10,7 +10,7 @@
     }
     &__heading{
       color:#fff;
-      font-size:4rem;
+      font-size:3.5rem;
       align-self: center;
       &--2{
         color:#fff;
@@ -28,6 +28,7 @@
       font-size: 2.5rem;
       margin-bottom: 1rem;
     }
+    // make the circle
     &__item{
       &::before{
       content:"";
