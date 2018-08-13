@@ -21,6 +21,9 @@
     text-align: right;
     color:$color-table-title;
     font-size:4rem;
+    @include respond(break-beta){
+      text-align: center;
+    }
   }
   // for time group
   &__times{
