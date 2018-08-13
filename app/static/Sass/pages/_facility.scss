@@ -12,11 +12,6 @@
       color:#fff;
       font-size:3.5rem;
       align-self: center;
-      &--2{
-        color:#fff;
-        font-size:3.5rem;
-        align-self: center;
-      }
     }
     &__list{
       font-weight: 300;
@@ -46,13 +41,14 @@
       @include flex-hor();
       &--1{
         margin-right:2rem;
+        // make it red
         li:last-child{
           font-weight: 300;
           color:rgb(172, 37, 37);
         }
         li:not(:first-child){
           @include respond(break-beta){
-            font-size:2rem;
+            font-size:2.5rem;
           }
         }
       }
