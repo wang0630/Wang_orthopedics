@@ -2,6 +2,6 @@
 instance/
 .webassets-cache
 style.css
-*.DS_Store
+.DS_Store
 *.pyc
 .vscode/
