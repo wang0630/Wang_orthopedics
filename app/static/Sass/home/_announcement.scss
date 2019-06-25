@@ -1,0 +1,28 @@
+.announcement {
+  grid-column: full-start/full-end;
+  font-size: 3.5rem;
+  padding: 8rem;
+
+  display: grid;
+  grid-row-gap: 7rem;
+  // justify-items: center;
+  &_header {
+    justify-self: center;
+  }
+
+  &__list {
+    display: grid;
+    grid-row-gap: 5rem;
+
+    &__item {
+      padding: 1rem;
+      border: 1px solid red;
+      border-radius: 2rem;
+      line-height: 150%; // according to current font-size
+    }
+  }
+
+  &_pagination {
+    justify-self: center;
+  }
+}

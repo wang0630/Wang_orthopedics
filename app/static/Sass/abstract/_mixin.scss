@@ -17,7 +17,7 @@
 }
 
 @mixin grid-child($row,$column){
-  grid:{
+  grid: {
     row:$row;
     column:$column;
   }
@@ -31,7 +31,7 @@
 
 @mixin grid-parent($trow,$tcol) {
   display: grid;
-  grid:{
+  grid: {
     template-rows:$trow;
     template-columns:$tcol;
   }
@@ -42,9 +42,9 @@
   justify-items: $jus-items;
 }
 
-$break-alpha = calc-em-media(1132);
-$break-beta = calc-em-media(850);
-$break-theata = calc-em-media(547);
+$break-alpha: calc-em-media(1132);
+$break-beta: calc-em-media(850);
+$break-theata: calc-em-media(547);
 @mixin respond($breakpoint){
   @if $breakpoint == "break-alpha"{
     @media only screen and (max-width: $break-alpha){ @content };

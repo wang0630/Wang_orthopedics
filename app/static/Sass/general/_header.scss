@@ -1,5 +1,5 @@
 .header{
-  background:{
+  background: {
     image: linear-gradient(rgba(0,0,0, .7),
                                     rgba(0,0,0,.7)),
                     url(#{$img-path}/front.jpg);   
@@ -7,7 +7,7 @@
     position: center;
     attachment: fixed;   
   }             
-  grid:{
+  grid: {
     row: 1/2;
     column: full-start/full-end;
     // min-content  符合圖片即可

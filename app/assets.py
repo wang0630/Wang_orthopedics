@@ -4,6 +4,7 @@ import os
 
 assets = Environment(app)
 
+# Let flask_assets can find the path of Scss file
 assets.load_path = [
   os.path.join(os.path.dirname(__file__), "static", "Sass")
 ]

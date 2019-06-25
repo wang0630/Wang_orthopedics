@@ -1,15 +1,27 @@
-@import "abstract/_variables";
-@import "abstract/_functions";
-@import "abstract/_mixin";
-@import "abstract/_animation";
-@import "pages/_target";
-@import "pages/_bone";
-@import "pages/_base.scss";
-@import "pages/_header.scss";
-@import "pages/_timetable.scss";
-@import "pages/_facility.scss";
-@import "pages/_doctors.scss";
-@import "pages/_info.scss";
-@import "pages/_footer.scss";
+@import "abstract/variables";
+@import "abstract/functions";
+@import "abstract/mixin";
+@import "abstract/animation";
 
-@import "pages/_layouts.scss";
+// General
+@import "general/header";
+@import "general/footer";
+
+// global layout
+@import "main-layout/layouts";
+
+// home
+@import "home/announcement";
+@import "home/timetable";
+@import "home/facility";
+@import "home/doctors";
+@import "home/info";
+
+// target page 
+@import "target/target";
+
+// bone page
+@import "bone/bone";
+
+// base setting
+@import "general/base";
