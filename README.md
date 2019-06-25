@@ -8,3 +8,6 @@
 ## Back-end route:
 1. I select to use flask and python3 as the framework instead of Node.js for simplicity.
 2. Includes basic routes and use flask_assets to generate css code from Scss automatically.
+
+## Local testing:
+1. ```python3 -m venv env ``` to activate the virtual venv

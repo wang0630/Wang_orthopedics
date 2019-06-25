@@ -5,7 +5,7 @@ import os
 assets = Environment(app)
 
 assets.load_path = [
-  os.path.join(os.path.dirname(__file__),"static","Sass")
+  os.path.join(os.path.dirname(__file__), "static", "Sass")
 ]
 
 assets.register(
