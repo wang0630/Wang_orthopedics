@@ -5,3 +5,4 @@ style.css
 .DS_Store
 *.pyc
 .vscode/
+__pycache__

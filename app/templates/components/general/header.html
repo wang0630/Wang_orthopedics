@@ -4,11 +4,12 @@
   <p class="header__text--1">汪骨外科診所</p>
   <p class="header__text--2">本院至民國八十六年開業至今，致力於提供專業的骨科及外科服務，累積病患至今已十三萬人．</p>
   <nav class="header__nav">
-    <a href="{{ url_for('home',_anchor='info') }}" class="header__link header__link--info">我們在哪裡</a>
-    <a href="{{ url_for('home',_anchor='timetable') }}" class="header__link header__link--time">看診時間</a>
-    <a href="{{ url_for('home',_anchor='doctors') }}" class="header__link header__link--doctor">醫生團隊</a>
-    <a href='{{ url_for("target") }}' class="header__link header__link--target">主治項目</a>
-    <a href="{{ url_for('home',_anchor='PT') }}" class="header__link header__link--PT">復健中心</a>
-    <a href="{{ url_for('boneMassMeasurement') }}" class="header__link header__link--bone">骨質密度檢測</a>
+    <!-- . is for blueprint -->
+    <a href="{{ url_for('.home',_anchor='info') }}" class="header__link header__link--info">我們在哪裡</a>
+    <a href="{{ url_for('.home',_anchor='timetable') }}" class="header__link header__link--time">看診時間</a>
+    <a href="{{ url_for('.home',_anchor='doctors') }}" class="header__link header__link--doctor">醫生團隊</a>
+    <a href='{{ url_for(".target") }}' class="header__link header__link--target">主治項目</a>
+    <a href="{{ url_for('.home',_anchor='PT') }}" class="header__link header__link--PT">復健中心</a>
+    <a href="{{ url_for('.boneMassMeasurement') }}" class="header__link header__link--bone">骨質密度檢測</a>
   </nav>
 </header>

@@ -1,6 +1,6 @@
+import os
 from flask_assets import Environment,Bundle
 from . import app
-import os
 
 assets = Environment(app)
 
