@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect, url_for, Blueprint
-from flask_login import login_required, login_user
+from flask_login import login_required, login_user, current_user
 from . import lm, app
 from .admini import Admini
 from .loginForm.loginForm import LoginForm
@@ -19,8 +19,7 @@ def login_main():
 def login():
   # Create the form
   form = LoginForm()
-  print(form.username.data)
-  print(form.password.data)
+  print(current_user)
 
   if request.method == 'GET' or not form.validate_on_submit():
     # All fields must be validated when submit btn is clicked
