@@ -21,10 +21,15 @@ def login():
   form = LoginForm()
   print(form.username.data)
   print(form.password.data)
-  if not form.validate_on_submit():
+
+  if request.method == 'GET' or not form.validate_on_submit():
     # All fields must be validated when submit btn is clicked
+    # Or the method is get
+    # simply return loginForm.html
+    print('here in GET')
     return render_template('login/loginForm.html', form=form)
-  
+
+  # Fetch the db to get the admini
   admini_doc = app.config['MONGO_COLLECTION_ADMINI'].find_one({'username': form.username.data})
   print(f"find a admini {admini_doc}")
 
@@ -44,7 +49,7 @@ def login():
 # return None if the ID is not valid
 @lm.user_loader
 def load_user(username):
-  admini = app.config['MONGO_COLLECTION_ADMINI'].find_one({'username': username})
-  if not admini:
+  admini_obj = app.config['MONGO_COLLECTION_ADMINI'].find_one({'username': username})
+  if not admini_obj:
       return None
-  return User(admini['username'])
+  return Admini(admini_obj['username'])
