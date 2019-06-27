@@ -19,28 +19,38 @@ def login_main():
 def login():
   # Create the form
   form = LoginForm()
-  print(current_user)
 
-  if request.method == 'GET' or not form.validate_on_submit():
-    # All fields must be validated when submit btn is clicked
-    # Or the method is get
-    # simply return loginForm.html
+  # current_user is a proxy for current login user
+  # it will be an anonymous user if he is not logged in
+  # anonymous user will return None when get_id() is called
+  idd = current_user.get_id()
+  if request.method == 'GET':
     print('here in GET')
-    return render_template('login/loginForm.html', form=form)
+    if idd:
+      print(f"current_user.get_id(): {idd}")
+      return redirect(url_for('.login_main'))
+    else:
+      return render_template('login/loginForm.html', form=form)
+  else: # post request
+    if not form.validate_on_submit():
+      # All fields must be validated when submit btn is clicked
+      # Or the method is get
+      # simply return loginForm.html
+      return render_template('login/loginForm.html', form=form)
 
-  # Fetch the db to get the admini
-  admini_doc = app.config['MONGO_COLLECTION_ADMINI'].find_one({'username': form.username.data})
-  print(f"find a admini {admini_doc}")
+    # Fetch the db to get the admini
+    admini_doc = app.config['MONGO_COLLECTION_ADMINI'].find_one({'username': form.username.data})
+    print(f"find a admini {admini_doc}")
 
-  # Check if admini exists and the password
-  if not admini_doc or not Admini.validate_password(admini_doc['password'], form.password.data):
-    # Password is not correct or admini name not exists
-    return render_template('login/loginForm.html', form=form)
-  
-  admini_obj = Admini(admini_doc['username'])
-  # Login the user
-  login_user(admini_obj)
-  return redirect(url_for('.login_main'))
+    # Check if admini exists and the password
+    if not admini_doc or not Admini.validate_password(admini_doc['password'], form.password.data):
+      # Password is not correct or admini name not exists
+      return render_template('login/loginForm.html', form=form)
+    
+    admini_obj = Admini(admini_doc['username'])
+    # Login the user
+    login_user(admini_obj)
+    return redirect(url_for('.login_main'))
 
 
 # Reload the user object through different session
