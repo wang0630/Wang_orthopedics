@@ -11,6 +11,9 @@ auth = Blueprint('auth', __name__)
 @auth.route('/loginMain')
 @login_required
 def login_main():
+  # Fetch existing announcement from db
+  announcements = list(app.config['MONGO_COLLECTION_ANNOUNCEMENT'].find({}, {'date': False}))
+  print(announcements)
   return render_template('login/loginMain.html')
 
 

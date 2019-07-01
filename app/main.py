@@ -1,14 +1,20 @@
 # coding: utf-8
 from flask import render_template, request, redirect, url_for, Blueprint
-from .data import PTList,targetList,imglist,bonelist
-
+from math import ceil
+from .data import PTList, targetList, imglist, bonelist
+from . import app
 # APIkey=app.config.get("APIKEY")
 main = Blueprint("main", __name__)
 
 @main.route("/")
 @main.route("/home")
 def home():
-  return render_template("home.html", PTList=PTList, imglist=imglist, metacontent=u"汪骨外科診所為大北門地區第一間骨外科診所，旨在提供病患最有效的骨外科治療．")
+  # Fetch announcement from db and sort it by date
+  announcements = list(app.config['MONGO_COLLECTION_ANNOUNCEMENT'].find({}).sort('date', -1))
+  # Page the list per 4 announcements
+  total_pages =  ceil(len(announcements) / 4)
+  # print(f'total_pages: {total_pages}')
+  return render_template("home.html", announcements=announcements, total_pages=total_pages, PTList=PTList, imglist=imglist, metacontent=u"汪骨外科診所為大北門地區第一間骨外科診所，旨在提供病患最有效的骨外科治療．")
 
 @main.route("/target")
 def target():

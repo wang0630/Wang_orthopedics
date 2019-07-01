@@ -1,6 +1,6 @@
 .announcement {
   grid-column: full-start/full-end;
-  font-size: 3rem;
+  font-size: 3.5rem;
   padding: 8rem;
 
   display: grid;
@@ -15,14 +15,31 @@
     grid-row-gap: 5rem;
 
     &__item {
+      display: flex;
+      flex-direction: column;
       padding: 1rem;
       border: 1px solid red;
       border-radius: 2rem;
       line-height: 150%; // according to current font-size
+
+      &__date {
+        font-size: 1.8rem;
+      }
     }
   }
 
-  &_pagination {
+  &__pagination {
     justify-self: center;
+    display: flex;
+    &__item {
+      cursor: pointer;
+      padding: .5rem 1rem;
+      font-size: 2.5rem;
+      border: 1px solid red;
+      border-radius: .3rem;
+      &:not(:last-child) {
+        margin-right: 1rem;
+      }
+    }
   }
 }
