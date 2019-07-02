@@ -7,7 +7,15 @@
   {% include "components/doctors.html" %}
   {% include "components/facility.html" %}
   {% include "components/general/footer.html" %}
-  {% assets "js-main" %}
+  <!-- {% assets "js-main" %}
     <script type="text/javascript" src="{{ ASSET_URL }}" async></script>
-  {% endassets %}
+  {% endassets %} -->
+{% endblock %}
+{% block myScript %}
+  <script type="text/javascript" async>
+    // let test = {{ announcements | tojson }};
+    // console.log(test)
+    // console.log('he')
+    console.log("hello");
+  </script>
 {% endblock %}

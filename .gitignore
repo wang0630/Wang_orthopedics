@@ -12,3 +12,6 @@ app/static/js
 .vscode/
 __pycache__
 .webassets-cache
+
+# Secret file
+.env

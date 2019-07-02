@@ -11,3 +11,5 @@ class Config:
   MONGO_DB = MongoClient(MONGO_URL)[DB_NAME]
   MONGO_COLLECTION_ADMINI = MONGO_DB['admini']
   MONGO_COLLECTION_ANNOUNCEMENT = MONGO_DB['announcement']
+  # Development
+  ENV='development'

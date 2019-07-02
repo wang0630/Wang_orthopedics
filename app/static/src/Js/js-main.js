@@ -1,1 +1,2 @@
-console.log('hi');
+/* Pagination btn functionality */
+
