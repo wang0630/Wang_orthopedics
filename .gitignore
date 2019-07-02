@@ -1,8 +1,14 @@
+# Virtual venv
 env/
 instance/
-.webassets-cache
+
+# Bundle
 style.css
+app/static/js
+
+# System gen
 .DS_Store
 *.pyc
 .vscode/
 __pycache__
+.webassets-cache

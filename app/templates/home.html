@@ -7,4 +7,7 @@
   {% include "components/doctors.html" %}
   {% include "components/facility.html" %}
   {% include "components/general/footer.html" %}
+  {% assets "js-main" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}" async></script>
+  {% endassets %}
 {% endblock %}

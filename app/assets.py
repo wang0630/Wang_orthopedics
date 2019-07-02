@@ -4,15 +4,21 @@ from . import app
 
 assets = Environment(app)
 
-# Let flask_assets can find the path of Scss file
+# Let flask_assets can find the path of Scss and Js files
 assets.load_path = [
-  os.path.join(os.path.dirname(__file__), "static", "Sass")
+  os.path.join(os.path.dirname(__file__), 'static', 'src', 'Sass'),
+  os.path.join(os.path.dirname(__file__), 'static', 'src', 'Js'),
 ]
 
-assets.register(
-  "css_all",
-  Bundle("main.scss",
-          filters="pyscss,cssmin",
-          depends="**/*.scss",
-          output="css/style.css")
-)
+bundles = {
+  'css-all': Bundle('main.scss',
+          filters='pyscss,cssmin',
+          depends='**/*.scss',
+          output='css/style.css'),
+
+  'js-main': Bundle('js-main.js',
+                    filters='jsmin',
+                    output='js/js-main.js')
+}
+
+assets.register(bundles)
