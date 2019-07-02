@@ -14,10 +14,7 @@
 
 <section class="announcement" id="announcement">
   <h3 class="announcement_header"> 最新公告 </h3>
-  <ul class="announcement__list">
-    {% for a in announcements %}
-      {{ announcement_item(a) }}
-    {% endfor %}
+  <ul class="announcement__list" id="aList">
   </ul>
   <ul class="announcement__pagination">
     {% for page in range(total_pages) %}

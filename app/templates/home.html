@@ -13,9 +13,31 @@
 {% endblock %}
 {% block myScript %}
   <script type="text/javascript" async>
-    // let test = {{ announcements | tojson }};
-    // console.log(test)
-    // console.log('he')
-    console.log("hello");
+    let announcements = {{ announcements | tojson }};
+    let ac_per_page = {{ ac_per_page }};
+    let bound = announcements.length > ac_per_page ? ac_per_page : announcements.length;
+
+    // ------------ Load the first 4 announcements -------------
+    window.addEventListener("load", () => {
+      let listr = "";
+      let aList = document.getElementById("aList");
+      for (let i = 0; i < bound; i++) {
+        listr = `${listr}<li class="announcement__list__item"> \
+                    <span class="announcement__list__item__date"> ${announcements[i].date} </span> \
+                    <p> ${announcements[i].content} </p> \
+                  </li>`;
+      }
+      // Insert the newly created element string
+      aList.innerHTML = listr;
+    });
+    // ----------------------------------------------------------
+
+
+    // ------- Add eventListener to every pagination btn ----------
+    let paginations = Array.from(document.querySelectorAll(".announcement__pagination__item"));
+    console.log(paginations)
+    
+    // ------------------------------------------------------------
+
   </script>
 {% endblock %}
