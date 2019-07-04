@@ -1,7 +1,8 @@
-<form method=post class="loginForm" action="/login">
+{% include "components/general/head.html" %}
+<form method=post action="/login" class="login-form">
   <!-- For csrf attack -->
   {{ form.hidden_tag() }}
-  <div>
+  <div class="login-form__main-block">
     {{ form.username.label }}
     {{ form.username() }}
     {{ form.password.label }}
