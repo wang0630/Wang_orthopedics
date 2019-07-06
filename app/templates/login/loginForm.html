@@ -3,9 +3,9 @@
   <!-- For csrf attack -->
   {{ form.hidden_tag() }}
   <div class="login-form__main-block">
-    {{ form.username.label }}
+    {{ form.username.label(class="login-form__main-block__label") }}
     {{ form.username() }}
-    {{ form.password.label }}
+    {{ form.password.label(class="login-form__main-block__label") }}
     {{ form.password() }}
     {{ form.submit() }}
   </div>

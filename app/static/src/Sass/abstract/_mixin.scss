@@ -42,11 +42,35 @@
   justify-items: $jus-items;
 }
 
+// ------------------- Layout ---------------------------
+@mixin overall-layout($page, $componentsCountWithoutMedia, $componentsCountWithMedia) {
+  display: grid;
+  @if $page == "main" {
+    grid-template-rows: 80vh repeat($componentsCountWithoutMedia, min-content);
+  } @else {
+    grid-template-rows: repeat($componentsCountWithoutMedia, min-content);
+  }
+  grid-template-columns: unquote("[full-start] minmax(4rem,1fr) [center-start] repeat(8,[col-start] minmax(min-content,14rem) [col-end]) [center-end] minmax(4rem,1fr) [full-end]");
+  @include respond(break-alpha, $componentsCountWithMedia) {
+    /*
+      We cannot access $componentsCountWithMedia inside here since it is a @content block of @mixin respond,
+      Mixin does not pass any argumenets to the @content block,
+      So (1) we pass $componentsCountWithMedia to respond first
+    */
+    grid-template-rows: repeat($componentsCountWithMedia , min-content);
+  }
+}
+
+// ------------------- Media query ----------------------
 $break-alpha: calc-em-media(1132);
 $break-beta: calc-em-media(850);
 $break-theata: calc-em-media(547);
-@mixin respond($breakpoint){
+@mixin respond($breakpoint, $c: null){
+  // Here (2) We set a local variable of $componentsCountWithMedia
+  $componentsCountWithMedia: $c;
+
   @if $breakpoint == "break-alpha"{
+    // Then here the @content can access it
     @media only screen and (max-width: $break-alpha){ @content };
   }
   @if $breakpoint == "break-beta"{
@@ -56,6 +80,8 @@ $break-theata: calc-em-media(547);
     @media only screen and (max-width: $break-theata){ @content };
   }
 }
+
+// ------------------- Animation ----------------------
 
 @mixin animation-move-down {
   opacity: 0;

@@ -1,4 +1,4 @@
 .login-main {
-  grid-column: full-start/full-end;
+  @include overall-layout(login-main, 2, 2);
   background-color: yellow;
 }

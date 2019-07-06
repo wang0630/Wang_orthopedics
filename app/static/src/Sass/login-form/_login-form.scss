@@ -1,10 +1,19 @@
 .login-form {
   display: flex;
   justify-content: center;
+  padding: 3rem 0rem;
   &__main-block {
+    font-size: 2rem;
     height: 20rem;
-    width: 20rem;
+    padding: 5rem;
     display: flex;
     flex-direction: column;
+    &__label {
+      padding: 1rem 0;
+    }
+    // Add margin-bottom
+    & input {
+      margin-bottom: 2rem;
+    }
   }
 }

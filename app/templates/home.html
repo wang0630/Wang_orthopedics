@@ -14,7 +14,7 @@
 {% block myScript %}
   <script type="text/javascript" async>
     let announcements = {{ announcements | tojson }};
-    console.log(announcements);
+    // console.log(announcements);
     let ac_per_page = {{ ac_per_page }};
     // Create one item
     const createListItem = (date, content) => `<li class="announcement__list__item"> \

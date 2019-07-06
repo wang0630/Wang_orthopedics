@@ -1,5 +1,6 @@
 from flask import render_template, request, redirect, url_for, Blueprint
 from flask_login import login_required, login_user, current_user
+from math import ceil
 from . import lm, app
 from .admini import Admini
 from .loginForm.loginForm import LoginForm
@@ -11,10 +12,13 @@ auth = Blueprint('auth', __name__)
 @auth.route('/loginMain')
 @login_required
 def login_main():
+  AC_PER_PAGE = 4
   # Fetch existing announcement from db
-  announcements = list(app.config['MONGO_COLLECTION_ANNOUNCEMENT'].find({}, {'date': False}))
+  announcements = list(app.config['MONGO_COLLECTION_ANNOUNCEMENT'].find({}, {'_id': False}))
+  # Page the list per 4 announcements
+  total_pages =  ceil(len(announcements) / AC_PER_PAGE)
   print(announcements)
-  return render_template('login/loginMain.html')
+  return render_template('login/loginMain.html', announcements=announcements, total_pages=total_pages)
 
 
 # Login form
