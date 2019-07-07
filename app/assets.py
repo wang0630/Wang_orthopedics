@@ -20,9 +20,9 @@ bundles = {
                     filters='jsmin',
                     output='js/js-main.js'),
 
-  'js-announcements': Bundle('js-announcements.js',
+  'js-mutation-observer': Bundle('js-mutation-observer.js',
                                   filters='jsmin',
-                                  output='js/js-announcements.js'),
+                                  output='js/js-mutation-observer.js'),
 }
 
 assets.register(bundles)

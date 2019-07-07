@@ -5,18 +5,12 @@ class AnnouncementsObserver {
       childList: true,
       subtree: true
     };
-    this._itemCount = 0;
-
     this._callback = this._callback.bind(this);
   }
 
   _callback(mutationList, observer) {
     mutationList.forEach((changed) => {
-      this._itemCount++;
       console.log(changed);
-      if (this._itemCount == 5) {
-        console.log('should stop listening');
-      }
     });
   }
 

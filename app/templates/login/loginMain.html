@@ -9,15 +9,19 @@
   {% assets "js-main" %}
     <script type="text/javascript" src="{{ ASSET_URL }}" async></script>
   {% endassets %}
-  {% assets "js-announcements" %}
+  {% assets "js-mutation-observer" %}
     <script type="text/javascript" src="{{ ASSET_URL }}" async></script>
   {% endassets %}
   <script type="text/javascript" async>
     const announcements = {{ announcements | tojson }};
     const ac_per_page = {{ ac_per_page }};
 
+    const obs = new AnnouncementsObserver();
+    obs.createObsAndWatch();
+
     const pagination = new Pagination(announcements, ac_per_page, true);
     pagination.renderInit();
     pagination.addPagination();
+    // pagination.addDelete();
   </script>
 {% endblock %}

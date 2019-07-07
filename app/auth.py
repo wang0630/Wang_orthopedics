@@ -14,12 +14,23 @@ auth = Blueprint('auth', __name__)
 def login_main():
   AC_PER_PAGE = 4
   # Fetch existing announcement from db
-  announcements = list(app.config['MONGO_COLLECTION_ANNOUNCEMENT'].find({}, {'_id': False}))
+  # transform Objectid to string
+  agg = app.config['MONGO_COLLECTION_ANNOUNCEMENT'].aggregate([
+    {
+      '$project': {
+        '_id': 0,
+        'content': 1,
+        'date': 1,
+        'id': {
+          '$toString': '$_id'
+        }
+      }
+    }
+  ])
+  announcements = list(agg)
   # Page the list per 4 announcements
-  total_pages =  ceil(len(announcements) / AC_PER_PAGE)
-  # print(announcements)
+  total_pages = ceil(len(announcements) / 4)
   return render_template('login/loginMain.html', ac_per_page=AC_PER_PAGE, announcements=announcements, total_pages=total_pages)
-
 
 # Login form
 @auth.route('/login', methods=['GET', 'POST'])

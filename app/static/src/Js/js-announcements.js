@@ -1,5 +1,0 @@
-class Announcements {
-  constructor() {
-    
-  }
-}
