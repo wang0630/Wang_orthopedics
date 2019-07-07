@@ -1,16 +1,17 @@
-{% include "components/general/head.html" %}
-<!-- {% block external %}
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-{% endblock %} -->
-<section class="login-main">
-  {% include "components/announcement.html" %}
-</section>
-{% assets "js-main" %}
-  <script type="text/javascript" src="{{ ASSET_URL }}" async></script>
-{% endassets %}
-{% assets "js-announcements" %}
-  <script type="text/javascript" src="{{ ASSET_URL }}" async></script>
-{% endassets %}
+{% extends "base/base.html" %}
+{% block body %}
+  <section class="login-main">
+    {% include "components/announcement.html" %}
+  </section>
+{% endblock %}
+
+{% block myScript %}
+  {% assets "js-main" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}" async></script>
+  {% endassets %}
+  {% assets "js-announcements" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}" async></script>
+  {% endassets %}
   <script type="text/javascript" async>
     const announcements = {{ announcements | tojson }};
     const ac_per_page = {{ ac_per_page }};
@@ -19,3 +20,4 @@
     pagination.renderInit();
     pagination.addPagination();
   </script>
+{% endblock %}

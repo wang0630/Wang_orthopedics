@@ -1,13 +1,21 @@
-{% extends "base.html" %}
-{% block main %}
-  {% include "components/general/header.html" %}
-  {% include "components/announcement.html" %}
-  {% include "components/info.html" %}
-  {% include "components/timetable.html" %}
-  {% include "components/doctors.html" %}
-  {% include "components/facility.html" %}
-  {% include "components/general/footer.html" %}
+{% extends "base/base.html" %}
+
+{% block head %}
+  {{ super() }}
 {% endblock %}
+
+{% block body %}
+  <main class="main">
+    {% include "general/header.html" %}
+    {% include "components/announcement.html" %}
+    {% include "components/info.html" %}
+    {% include "components/timetable.html" %}
+    {% include "components/doctors.html" %}
+    {% include "components/facility.html" %}
+    {% include "general/footer.html" %}
+  </main>
+{% endblock %}
+
 {% block myScript %}
   {% assets "js-main" %}
   <script type="text/javascript" src="{{ ASSET_URL }}" async></script>
