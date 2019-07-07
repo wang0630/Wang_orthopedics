@@ -18,7 +18,11 @@ bundles = {
 
   'js-main': Bundle('js-main.js',
                     filters='jsmin',
-                    output='js/js-main.js')
+                    output='js/js-main.js'),
+
+  'js-announcements': Bundle('js-announcements.js',
+                                  filters='jsmin',
+                                  output='js/js-announcements.js'),
 }
 
 assets.register(bundles)

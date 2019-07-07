@@ -17,8 +17,8 @@ def login_main():
   announcements = list(app.config['MONGO_COLLECTION_ANNOUNCEMENT'].find({}, {'_id': False}))
   # Page the list per 4 announcements
   total_pages =  ceil(len(announcements) / AC_PER_PAGE)
-  print(announcements)
-  return render_template('login/loginMain.html', announcements=announcements, total_pages=total_pages)
+  # print(announcements)
+  return render_template('login/loginMain.html', ac_per_page=AC_PER_PAGE, announcements=announcements, total_pages=total_pages)
 
 
 # Login form

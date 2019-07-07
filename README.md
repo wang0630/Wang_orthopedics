@@ -10,4 +10,7 @@
 2. Includes basic routes and use flask_assets to generate css code from Scss automatically.
 
 ## Local testing:
-1. ```python3 -m venv env ``` to activate the virtual venv
+1. ```python3 -m venv env ``` to create the virtual venv
+2. ```source env/bin/activate ``` activate the virtual venv
+3. ```pip3 install -r requirements.txt ``` to install all dependcenies
+4. ```python3 run.py ``` to run the server

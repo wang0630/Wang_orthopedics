@@ -22,8 +22,17 @@
       border-radius: 2rem;
       line-height: 150%; // according to current font-size
 
+      position: relative; // For close btn in login-main.html
       &__date {
         font-size: 1.8rem;
+      }
+
+      // Only used in login-main.html
+      &__close {
+        position: absolute;
+        top: 7%;
+        right: 1%;
+        cursor: pointer;
       }
     }
   }

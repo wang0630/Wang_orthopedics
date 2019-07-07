@@ -1,10 +1,4 @@
-<!-- Macro for the announcement items -->
-{% macro announcement_item(a) %}
-  <li class="announcement__list__item">
-    <span class="announcement__list__item__date"> {{ a.date }} </span>
-    <p> {{ a.content }} </p>
-  </li>
-{% endmacro %}
+<!-- Macro for the announcement pagination -->
 
 {% macro announcement_pagination(number) %}
   <li class="announcement__pagination__item">

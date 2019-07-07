@@ -7,9 +7,6 @@
   {% include "components/doctors.html" %}
   {% include "components/facility.html" %}
   {% include "components/general/footer.html" %}
-  <!-- {% assets "js-main" %}
-    <script type="text/javascript" src="{{ ASSET_URL }}" async></script>
-  {% endassets %} -->
 {% endblock %}
 {% block myScript %}
   {% assets "js-main" %}
@@ -19,7 +16,7 @@
     const announcements = {{ announcements | tojson }};
     const ac_per_page = {{ ac_per_page }};
 
-    const pagination = new Pagination(announcements, ac_per_page);
+    const pagination = new Pagination(announcements, ac_per_page, false);
     pagination.renderInit();
     pagination.addPagination();
   </script>
