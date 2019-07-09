@@ -9,7 +9,7 @@ auth = Blueprint('auth', __name__)
 
 # main login page
 # must loggin to see the page
-@auth.route('/loginMain')
+@auth.route('/loginMain', methods=['GET'])
 @login_required
 def login_main():
   AC_PER_PAGE = 4

@@ -13,9 +13,11 @@ lm.login_view = 'auth.login'
 
 from .main import main
 from .auth import auth
+from .announcements import announcements
 # register blueprint
 app.register_blueprint(main)
 app.register_blueprint(auth)
+app.register_blueprint(announcements)
 
 my_loader = jinja2.ChoiceLoader([
     app.jinja_loader,
