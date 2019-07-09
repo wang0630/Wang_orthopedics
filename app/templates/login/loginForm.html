@@ -1,28 +1,30 @@
-{% include "components/general/head.html" %}
-<form method=post action="/login" class="login-form">
-  <!-- For csrf attack -->
-  {{ form.hidden_tag() }}
-  <div class="login-form__main-block">
-    {{ form.username.label(class="login-form__main-block__label") }}
-    {{ form.username() }}
-    {{ form.password.label(class="login-form__main-block__label") }}
-    {{ form.password() }}
-    {{ form.submit() }}
-  </div>
-</form>
+{% extends "base/base.html" %}
+{% block body %}
+  <form method=post action="/login" class="login-form">
+    <!-- For csrf attack -->
+    {{ form.hidden_tag() }}
+    <div class="login-form__main-block">
+      {{ form.username.label(class="login-form__main-block__label") }}
+      {{ form.username() }}
+      {{ form.password.label(class="login-form__main-block__label") }}
+      {{ form.password() }}
+      {{ form.submit() }}
+    </div>
+  </form>
 
-{% if form.username.errors %}
-  <ul>
-  {% for error in form.username.errors %}
-    <li>{{ error }}</li>
-  {% endfor %}
-  </ul>
-{% endif %}
+  {% if form.username.errors %}
+    <ul>
+    {% for error in form.username.errors %}
+      <li>{{ error }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
 
-{% if form.password.errors %}
-  <ul>
-  {% for error in form.password.errors %}
-    <li>{{ error }}</li>
-  {% endfor %}
-  </ul>
-{% endif %}
+  {% if form.password.errors %}
+    <ul>
+    {% for error in form.password.errors %}
+      <li>{{ error }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endblock %}

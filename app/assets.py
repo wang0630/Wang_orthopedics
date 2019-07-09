@@ -23,6 +23,9 @@ bundles = {
   'js-mutation-observer': Bundle('js-mutation-observer.js',
                                   filters='jsmin',
                                   output='js/js-mutation-observer.js'),
+  'js-announcements': Bundle('js-announcements.js',
+                                  filters='jsmin',
+                                  output='js/js-announcements.js'),                                
 }
 
 assets.register(bundles)

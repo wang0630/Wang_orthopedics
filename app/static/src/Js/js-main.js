@@ -4,8 +4,13 @@ class Pagination {
     this._aList = document.getElementById("aList");
     this._ac_per_page = ac_per_page;
     this._announcements = announcements;
-    this._idmapping = {};
     this._isInAuth = isInAuth;
+
+    // Create idMapping and pass it to Annoucements object
+    this.idMapping = {};
+    this._announcements.forEach((a, index) => {
+      this.idMapping[index] = { id: this._announcements[index].id }
+    });
   }
 
   _createListItem(date, content, index) {
@@ -30,7 +35,6 @@ class Pagination {
     let end = start + this._ac_per_page > this._announcements.length ? this._announcements.length : start + this._ac_per_page;
     let listr = "";
     for (let i = start; i < end; i++) {
-      this._idmapping[i] = { id: this._announcements[i].id }
       listr = `${listr}${this._createListItem(this._announcements[i].date, this._announcements[i].content, i)}`;
     }
     return listr;
@@ -70,11 +74,5 @@ class Pagination {
         this._renderOnePage(parseInt(p.innerHTML) - 1);
       })
     });
-  }
-
-  // For the cross btn
-  addDelete() {
-    const crossBtns = Array.from(document.querySelectorAll('.announcement__list__item__date'));
-    console.log(crossBtns);
   }
 }
