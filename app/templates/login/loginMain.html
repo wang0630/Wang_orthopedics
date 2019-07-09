@@ -1,4 +1,8 @@
 {% extends "base/base.html" %}
+{% block head %}
+  {{ super() }}
+  <script src="https://unpkg.com/axios/dist/axios.min.js" async></script>
+{% endblock %}
 {% block body %}
   <section class="login-main">
     {% include "components/announcement.html" %}
