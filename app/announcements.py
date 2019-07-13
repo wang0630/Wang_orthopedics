@@ -10,7 +10,21 @@ announcements = Blueprint(name='announcements', import_name=__name__ , url_prefi
 def deletion(id):
   objId = ObjectId(id)
   deleted = app.config['MONGO_COLLECTION_ANNOUNCEMENT'].find_one_and_delete({ '_id': objId })
+  # print(id)
   if deleted:
     return 'Deletion succeeds', 200
   else:
     return 'Deletion fails, query not found', 404
+
+
+# For preflight aka CORS
+@announcements.after_request
+@login_required
+def after_request(res):
+  if request.method == 'OPTIONS':
+    header = res.header
+    print(f'Original header: {header}')
+    header['Access-Control-Allow-Methods'] = ['GET', 'POST', 'DELETE']
+    header['Access-Control-Allow-Headers'] = '*'
+  
+  return res
