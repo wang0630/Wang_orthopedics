@@ -1,20 +1,22 @@
 import jinja2
 from flask import Flask
 from flask_login import LoginManager
-
 from dotenv import load_dotenv
-from pathlib import Path  # python3 only
-from os.path import join, dirname
-from os import environ
-#env_path = join(dirname(__file__), '..', '.env')
+from pathlib import Path
+
+# Load environ variables from external file
+# __file__ represents the abs path of this file
+# parents[1] goes one level up to root folder
 env_path = Path(__file__).parents[1] / '.env'
-print(Path(__file__).parents[1] / '.env')
 load_dotenv(dotenv_path=env_path)
 
+# Create the app
 app = Flask(__name__, static_url_path='/static')
+
+# Import config after the dotenv
 from .config import Config
 app.config.from_object(Config)
-print(environ.get('ii', 'nope'))
+
 # flask_loging setup
 lm = LoginManager()
 lm.init_app(app)
