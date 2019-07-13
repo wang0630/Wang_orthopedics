@@ -3,9 +3,16 @@ from flask import Flask
 from flask_login import LoginManager
 from .config import Config
 
+# from dotenv import load_dotenv
+# from pathlib import Path  # python3 only
+import os
+# env_path = Path('..', '.....env')
+# print(env_path)
+# load_dotenv(dotenv_path=env_path)
+
 app = Flask(__name__, static_url_path='/static')
 app.config.from_object(Config)
-
+print(os.environ.get('ii', 'nope'))
 # flask_loging setup
 lm = LoginManager()
 lm.init_app(app)
