@@ -38,3 +38,5 @@ my_loader = jinja2.ChoiceLoader([
 app.jinja_loader = my_loader
 
 from . import assets
+
+print(f'App is now running on {app.config["REQUEST_IP"]} with env {app.config["ENV"]}')

@@ -30,7 +30,7 @@ def login_main():
   announcements = list(agg)
   # Page the list per 4 announcements
   total_pages = ceil(len(announcements) / 4)
-  return render_template('login/loginMain.html', ac_per_page=AC_PER_PAGE, announcements=announcements, total_pages=total_pages)
+  return render_template('login/loginMain.html', ac_per_page=AC_PER_PAGE, announcements=announcements, total_pages=total_pages, request_ip=app.config['REQUEST_IP'])
 
 # Login form
 @auth.route('/login', methods=['GET', 'POST'])

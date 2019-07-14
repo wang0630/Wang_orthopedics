@@ -12,4 +12,6 @@ class Config:
   MONGO_COLLECTION_ADMINI = MONGO_DB['admini']
   MONGO_COLLECTION_ANNOUNCEMENT = MONGO_DB['announcement']
   # Development
-  ENV='development'
+  ENV=os.environ.get('ENV')
+  REQUEST_IP=os.environ.get('LOCALHOST') if ENV=='development' else os.environ.get('PUBLICHOST')
+  

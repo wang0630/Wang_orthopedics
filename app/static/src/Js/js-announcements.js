@@ -1,19 +1,24 @@
 class AnnouncementsOperation {
-  constructor(idMapping) {
+  constructor(idMapping, ip) {
     this._idMapping = idMapping;
+    this._ip = ip;
     this.deleteAnnouncement = this.deleteAnnouncement.bind(this);
   }
 
   async deleteAnnouncement(index) {
-    const targetId = this._idMapping[index].id;
-    try {
-      const url = 'http://127.0.0.1:5000/announcements/deletion/' + targetId;
-      const res = await axios.delete(url);
-      console.log(res);
-    } catch(e) {
-      console.log(e);
+    if (confirm('確定要刪除這個公告？')) {
+      const targetId = this._idMapping[index].id;
+        try {
+          // const url = this._ip + '/announcements/deletion/' + targetId;
+          const url = `${this._ip}/announcements/deletion/${targetId}`;
+          console.log(url);
+          const res = await axios.delete(url);
+          // console.log(res);
+        } catch(e) {
+          console.log(e);
+        }
+        // Reload the page
+        window.location.reload(true);
+      }
     }
-    // Reload the page
-    window.location.reload(true);
-  }
 }

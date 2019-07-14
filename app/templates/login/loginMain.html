@@ -22,12 +22,13 @@
   <script type="text/javascript" async>
     const announcements = {{ announcements | tojson }};
     const ac_per_page = {{ ac_per_page }};
+    const ip = {{ request_ip | tojson }};
 
     const pagination = new Pagination(announcements, ac_per_page, true);
     
     // Recieve idMapping from pagination
     // ex. index = 0, 1 ... and return the id of that announcement
-    const aop = new AnnouncementsOperation(pagination.idMapping);
+    const aop = new AnnouncementsOperation(pagination.idMapping, ip);
 
     // Create observer to invoke callback whenever announcements are rendered properly
     const obs = new AnnouncementsObserver(aop.deleteAnnouncement);
