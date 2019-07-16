@@ -19,3 +19,11 @@
     }
   }
 }
+
+.login-form-errors {
+  display: flex;
+  justify-content: center;
+  padding: 3rem 0;
+  font-size: 3.5rem;
+  color: red;
+}

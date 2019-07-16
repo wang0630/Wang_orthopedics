@@ -20,7 +20,9 @@ app.config.from_object(Config)
 # flask_loging setup
 lm = LoginManager()
 lm.init_app(app)
+# This view will be the one which users will be returned to when they try to access a protected route
 lm.login_view = 'auth.login'
+lm.login_message = u'你沒有權限進入這個頁面'
 
 from .main import main
 from .auth import auth
@@ -39,4 +41,4 @@ app.jinja_loader = my_loader
 
 from . import assets
 
-print(f'App is now running on {app.config["REQUEST_IP"]} with env {app.config["ENV"]}')
+print(f'###############\nApp is now running on\n{app.config["REQUEST_IP"]}\nwith env {app.config["ENV"]}\n###############')

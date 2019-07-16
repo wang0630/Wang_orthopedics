@@ -1,0 +1,10 @@
+<form method=post>
+  <!-- For csrf attack -->
+  {{ form.hidden_tag() }}
+  {{ form.date.label() }}
+  {{ form.date() }}
+  {{ form.title.label() }}
+  {{ form.title() }}
+  {{ form.content.label() }}
+  {{ form.content() }}
+</form>
