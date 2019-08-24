@@ -11,6 +11,8 @@ class Config:
   MONGO_DB = MongoClient(MONGO_URL)[DB_NAME]
   MONGO_COLLECTION_ADMINI = MONGO_DB['admini']
   MONGO_COLLECTION_ANNOUNCEMENT = MONGO_DB['announcement']
+  # Some constant
+  AC_PER_PAGE = 4
   # Development
   ENV=os.environ.get('ENV')
   REQUEST_IP=os.environ.get('LOCALHOST') if ENV=='development' else os.environ.get('PUBLICHOST')

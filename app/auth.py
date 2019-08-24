@@ -1,10 +1,10 @@
 from flask import render_template, request, redirect, url_for, Blueprint
 from flask_login import login_required, login_user, current_user
-from math import ceil
 from . import lm, app
 from .admini import Admini
 from .loginForm import LoginForm
 from .announcementsForm import AnnouncementsForm
+from .dbService import fetch_all_announcements
 
 auth = Blueprint('auth', __name__)
 
@@ -14,25 +14,18 @@ auth = Blueprint('auth', __name__)
 @login_required
 def login_main():
   form = AnnouncementsForm()
-  AC_PER_PAGE = 4
   # Fetch existing announcement from db
   # transform Objectid to string
-  agg = app.config['MONGO_COLLECTION_ANNOUNCEMENT'].aggregate([
-    {
-      '$project': {
-        '_id': 0,
-        'content': 1,
-        'date': 1,
-        'id': {
-          '$toString': '$_id'
-        }
-      }
-    }
-  ])
-  announcements = list(agg)
-  # Page the list per 4 announcements
-  total_pages = ceil(len(announcements) / 4)
-  return render_template('login/loginMain.html', form=form, ac_per_page=AC_PER_PAGE, announcements=announcements, total_pages=total_pages, request_ip=app.config['REQUEST_IP'])
+  announcements, total_pages = \
+    fetch_all_announcements(app.config['MONGO_COLLECTION_ANNOUNCEMENT'], app.config['AC_PER_PAGE'])
+  return render_template(
+    'login/loginMain.html',
+    form=form,
+    ac_per_page=app.config['AC_PER_PAGE'],
+    announcements=announcements,
+    total_pages=total_pages,
+    request_ip=app.config['REQUEST_IP']
+  )
 
 # Login form
 @auth.route('/login', methods=['GET', 'POST'])
@@ -45,7 +38,6 @@ def login():
   # anonymous user will return None when get_id() is called
   idd = current_user.get_id()
   if request.method == 'GET':
-    print('here in GET')
     if idd:
       print(f"current_user.get_id(): {idd}")
       return redirect(url_for('.login_main'))

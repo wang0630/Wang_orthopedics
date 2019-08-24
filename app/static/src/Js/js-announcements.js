@@ -13,7 +13,6 @@ class AnnouncementsOperation {
           const url = `${this._ip}/announcements/deletion/${targetId}`;
           console.log(url);
           const res = await axios.delete(url);
-          // console.log(res);
         } catch(e) {
           console.log(e);
         }

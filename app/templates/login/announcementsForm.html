@@ -1,10 +1,11 @@
-<form method=post>
+<form method=post action="/announcement" class="announcements-form">
   <!-- For csrf attack -->
   {{ form.hidden_tag() }}
   {{ form.date.label() }}
-  {{ form.date() }}
+  {{ form.date(placeholder="yyyy/mm/dd") }}
   {{ form.title.label() }}
   {{ form.title() }}
   {{ form.content.label() }}
-  {{ form.content() }}
+  {{ form.content(class="announcements-form__content") }}
+  {{ form.submit() }}
 </form>
