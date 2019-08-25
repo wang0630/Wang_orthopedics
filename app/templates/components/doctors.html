@@ -1,10 +1,28 @@
+{% macro doctorPic(name, which)  %}
+  <picture class="doctors__doctor__imgcontainer">
+    {# {{ ... }} is a Python expression, so ('img/' + which) can work #}
+    {# source specifies the media condition for pictures #}
+    {# iponeX has DPR 3x, this means every dimension in css pixel is 3 times big #}
+    {# For ex, if the div is 300x200, then it will be 900x600 in iphoneX #}
+    {# So we need a bigger picture for that #}
+    <source
+      media="(max-width: 390px)"
+      srcset="{{ url_for('static', filename='img/'+ which + '-2x.jpg' ) }} 2x,
+              {{ url_for('static', filename='img/'+ which + '-3x.jpg' ) }} 3x"
+    >
+    <img
+      src="{{ url_for('static', filename='img/'+ which + '-3x.jpg' ) }}"
+      alt="{{ name }}"
+      class="doctors__doctor__img"
+    >
+  </picture>
+{% endmacro %}
+
 <section class="doctors" id="doctors">
   <h1 class="doctors__heading">醫生團隊</h1>
   <div class="doctors__intro">
     <div class="doctors__doctor">
-      <div class="doctors__doctor__imgcontainer">
-        <img src="{{ url_for('static', filename='img/doctor1.jpg' ) }}" alt="汪明玉醫師" class="doctors__doctor__img">
-      </div>
+      {{ doctorPic("汪明玉醫師", "doctor1") }}
       <h3 class="doctors__doctor__name">汪明玉醫師</h3>
       <div class="doctors__doctor__ex">
         <p>經歷：</p>
@@ -16,7 +34,7 @@
     </div>
     <div class="doctors__doctor">
       <div class="doctors__doctor__imgcontainer">
-        <img src="{{ url_for('static', filename='img/doctor2.jpg' ) }}" alt="黃濤醫師" class="doctors__doctor__img">
+        {{ doctorPic("黃濤醫師", "doctor2") }}
       </div>
       <h3 class="doctors__doctor__name">黃濤醫師</h3>
       <div class="doctors__doctor__ex">

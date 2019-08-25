@@ -1,8 +1,12 @@
 <header class="header">
-  <img src="{{ url_for('static', filename='img/icon/HI.png') }}" alt="" class="header__HI">
+  <img
+    src="{{ url_for('static', filename='img/icon/HI.png') }}"
+    alt="The external view of our clinic"
+    class="header__HI"
+  >
   <p class="header__text--1">歡迎光臨</p>
   <p class="header__text--1">汪骨外科診所</p>
-  <p class="header__text--2">本院至民國八十六年開業至今，致力於提供專業的骨科及外科服務，累積病患至今已十三萬人．</p>
+  <p class="header__text--2">本院至民國八十六年開業至今，致力於提供專業的骨科及外科服務，累積病患至今已十三萬人。</p>
   <nav class="header__nav">
     <!-- . is for blueprint -->
     <a href="{{ url_for('.home',_anchor='info') }}" class="header__link header__link--info">我們在哪裡</a>

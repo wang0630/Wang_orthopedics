@@ -18,30 +18,30 @@
   }
   &__doctor{
     // 分開卡片
-    @include respond(break-alpha){
+    @include respond(break-theata){
       &:first-child{
         margin-bottom: 3rem;
       }
     };
     display: grid;
     grid-template-rows: 3fr 2fr;
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns: 1fr 1fr;
     font-size:3rem;
+
     &__imgcontainer{
       grid-row:1/2;
-      grid-column: 1/-1;
+      grid-column: 1/4;
     }
     &__img{
       // add for not overflowing the grid container
       height: 100%;
       width:100% ;
       object-fit: cover;
-      ///
       z-index: 1;
     }
     &__name{
-      grid-row: 1/2;
-      grid-column: 1/-1;
+      grid-row: 1 / 2;
+      grid-column: 1/4;
       font-weight: 400;
       padding: 1rem;
       color:#fff;
@@ -56,9 +56,9 @@
     }
     &__ex{
       background-color: #fff;
-      padding:3rem;
       font-size:2.5rem;
-      grid-column: 1/-1;
+      grid-row: 2/3;
+      grid-column: 1/4;
       padding: 3rem;
       display: flex;
       flex-direction: column;
