@@ -7,6 +7,7 @@ def fetch_all_announcements(collection, per_page):
         '_id': 0,
         'content': 1,
         'date': 1,
+        "title": 1,
         'id': {
           '$toString': '$_id'
         }
@@ -17,6 +18,7 @@ def fetch_all_announcements(collection, per_page):
   for a in announcements:
     a['date'] = f"{a['date'].year}/{a['date'].month}/{a['date'].day}"
   total_pages = ceil(len(announcements) / per_page)
+  print(announcements)
   return announcements, total_pages
 
 def post_announcement(collection, announcement):
