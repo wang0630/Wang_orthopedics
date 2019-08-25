@@ -1,11 +1,23 @@
+{% macro error_block(errors) %}
+  {% for error in errors %}
+    <strong style="color: #a52a2a"> {{ error }} </strong>
+  {% endfor %}
+{% endmacro %}
+
 <form method=post action="/announcement" class="announcements-form">
   <!-- For csrf attack -->
   {{ form.hidden_tag() }}
   {{ form.date.label() }}
   {{ form.date(placeholder="yyyy/mm/dd") }}
+  {% if error_msgs %}
+    {{ error_block(error_msgs) }}
+  {% endif %}
   {{ form.title.label() }}
   {{ form.title() }}
   {{ form.content.label() }}
+  {% if form.content.errors %}
+    {{ error_block(form.content.errors) }}
+  {% endif %}
   {{ form.content(class="announcements-form__content") }}
   {{ form.submit() }}
 </form>

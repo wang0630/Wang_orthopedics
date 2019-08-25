@@ -1,11 +1,7 @@
 {% macro error_block(errors) %}
-  <ul>
-    {% for error in errors %}
-      <li>
-        <strong>{{ error }} <strong>
-      </li>
-    {% endfor %}
-  </ul>
+  {% for error in errors %}
+    <strong style="color: #a52a2a"> {{ error }} </strong>
+  {% endfor %}
 {% endmacro %}
 
 {% extends "base/base.html" %}

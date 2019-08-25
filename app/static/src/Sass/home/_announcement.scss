@@ -23,7 +23,7 @@
       padding: 1rem;
       border: 1px solid rgb(196, 189, 189);
       border-radius: 2rem;
-      font-size: 2.5rem;
+      font-size: 3rem;
       line-height: 150%; // according to current font-size
 
       position: relative; // For close btn in login-main.html
@@ -33,6 +33,12 @@
         & span:first-child {
           margin-right: 2rem;
         }
+      }
+
+      &__p {
+        // To prevent overflow, word breaks should be inserted between any two characters
+        // (excluding Chinese/Japanese/Korean text).
+        word-break: break-all;
       }
 
       // Only used in login-main.html

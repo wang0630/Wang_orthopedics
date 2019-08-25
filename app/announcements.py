@@ -26,8 +26,9 @@ def post():
   if not form.validate_on_submit():
     if (form.date.errors):
       error_msgs.append(u'日期不符合格式，請重新輸入！')
-      announcements, total_pages = \
-        fetch_all_announcements(app.config['MONGO_COLLECTION_ANNOUNCEMENT'], app.config['AC_PER_PAGE'])
+    # Re-fetch the announcements
+    announcements, total_pages = \
+      fetch_all_announcements(app.config['MONGO_COLLECTION_ANNOUNCEMENT'], app.config['AC_PER_PAGE'])
     # Bad request, return template with error_msgs
     return render_template(
         'login/loginMain.html',
