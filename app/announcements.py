@@ -2,7 +2,7 @@ from flask import render_template, request, redirect, url_for, Blueprint
 from flask_login import login_required, login_user, current_user
 from bson import ObjectId
 from .announcementsForm import AnnouncementsForm
-from .dbService import fetch_all_announcements
+from .dbService import fetch_all_announcements, post_announcement
 from . import app
 
 announcements = Blueprint(name='announcements', import_name=__name__ , url_prefix='/announcement')
@@ -28,17 +28,25 @@ def post():
       error_msgs.append(u'日期不符合格式，請重新輸入！')
       announcements, total_pages = \
         fetch_all_announcements(app.config['MONGO_COLLECTION_ANNOUNCEMENT'], app.config['AC_PER_PAGE'])
-    # Bad request
+    # Bad request, return template with error_msgs
     return render_template(
         'login/loginMain.html',
         form=form,
         ac_per_page=app.config['AC_PER_PAGE'],
         announcements=announcements,
         total_pages=total_pages,
-        request_ip=app.config['REQUEST_IP']
+        request_ip=app.config['REQUEST_IP'],
+        error_msgs=error_msgs
       ), 400
   else:
-    return '', 204
+    announcement = {
+      'title': form.title.data,
+      'date': form.date.data,
+      'content': form.content.data,
+    }
+    post_announcement(app.config['MONGO_COLLECTION_ANNOUNCEMENT'], announcement)
+    return redirect(url_for('auth.login_main'))
+
 
 
 # For preflight aka CORS

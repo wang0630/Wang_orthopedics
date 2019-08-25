@@ -1,14 +1,13 @@
 .announcements-form {
   grid-row: 2/3;
-  grid-column: 3/9;
-  height: 30vh;
+  grid-column: center-start/center-end;
   display: flex;
   flex-direction: column;
   padding: 3rem;
   justify-content: center;
   align-items: start;
 
-  font-size: 2.5rem;
+  font-size: 3rem;
 }
 
 .announcements-form > * {
@@ -17,4 +16,6 @@
 
 .announcements-form__content {
   align-self: stretch;
+  height: 30%;
 }
+

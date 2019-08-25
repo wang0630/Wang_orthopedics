@@ -27,10 +27,12 @@ lm.login_message = u'你沒有權限進入這個頁面'
 from .main import main
 from .auth import auth
 from .announcements import announcements
+from .errors import errors
 # register blueprint
 app.register_blueprint(main)
 app.register_blueprint(auth)
 app.register_blueprint(announcements)
+app.register_blueprint(errors)
 
 my_loader = jinja2.ChoiceLoader([
     app.jinja_loader,

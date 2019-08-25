@@ -10,7 +10,7 @@ class AnnouncementsOperation {
       const targetId = this._idMapping[index].id;
         try {
           // const url = this._ip + '/announcements/deletion/' + targetId;
-          const url = `${this._ip}/announcements/deletion/${targetId}`;
+          const url = `${this._ip}/announcement/${targetId}`;
           console.log(url);
           const res = await axios.delete(url);
         } catch(e) {

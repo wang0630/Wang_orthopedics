@@ -18,6 +18,7 @@ def login_main():
   # transform Objectid to string
   announcements, total_pages = \
     fetch_all_announcements(app.config['MONGO_COLLECTION_ANNOUNCEMENT'], app.config['AC_PER_PAGE'])
+
   return render_template(
     'login/loginMain.html',
     form=form,

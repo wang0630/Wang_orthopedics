@@ -48,7 +48,8 @@
   @if $page == "main" {
     grid-template-rows: 80vh repeat($componentsCountWithoutMedia, min-content);
   } @else {
-    grid-template-rows: repeat($componentsCountWithoutMedia, min-content);
+    // For login main page
+    grid-template-rows: minmax(65vh, min-content) 35vh;
   }
   grid-template-columns: unquote("[full-start] minmax(4rem,1fr) [center-start] repeat(8,[col-start] minmax(min-content,14rem) [col-end]) [center-end] minmax(4rem,1fr) [full-end]");
   @include respond(break-alpha, $componentsCountWithMedia) {
@@ -57,7 +58,7 @@
       Mixin does not pass any argumenets to the @content block,
       So (1) we pass $componentsCountWithMedia to respond first
     */
-    grid-template-rows: repeat($componentsCountWithMedia , min-content);
+    // grid-template-rows: repeat($componentsCountWithMedia , min-content);
   }
 }
 

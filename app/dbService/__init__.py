@@ -14,5 +14,12 @@ def fetch_all_announcements(collection, per_page):
     }
   ])
   announcements = list(agg)
+  for a in announcements:
+    a['date'] = f"{a['date'].year}/{a['date'].month}/{a['date'].day}"
   total_pages = ceil(len(announcements) / per_page)
-  return list(agg), total_pages
+  return announcements, total_pages
+
+def post_announcement(collection, announcement):
+  print(announcement)
+  result = collection.insert_one(announcement)
+  return result.inserted_id
