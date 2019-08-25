@@ -12,15 +12,15 @@
 
 {% block myScript %}
   {% assets "js-main" %}
-    <script type="text/javascript" src="{{ ASSET_URL }}" async></script>
+    <script type="application/javascript" src="{{ ASSET_URL }}" async></script>
   {% endassets %}
   {% assets "js-mutation-observer" %}
-    <script type="text/javascript" src="{{ ASSET_URL }}" async></script>
+    <script type="application/javascript" src="{{ ASSET_URL }}" async></script>
   {% endassets %}
   {% assets "js-announcements" %}
-    <script type="text/javascript" src="{{ ASSET_URL }}" async></script>
+    <script type="application/javascript" src="{{ ASSET_URL }}" async></script>
   {% endassets %}
-  <script type="text/javascript" async>
+  <script type="application/javascript" async>
     const announcements = {{ announcements | tojson }};
     const ac_per_page = {{ ac_per_page }};
     const ip = {{ request_ip | tojson }};

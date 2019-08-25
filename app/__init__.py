@@ -1,6 +1,7 @@
 import jinja2
 from flask import Flask
 from flask_login import LoginManager
+from flask_compress import Compress
 from dotenv import load_dotenv
 from pathlib import Path
 
@@ -28,6 +29,7 @@ from .main import main
 from .auth import auth
 from .announcements import announcements
 from .errors import errors
+
 # register blueprint
 app.register_blueprint(main)
 app.register_blueprint(auth)
@@ -41,6 +43,10 @@ my_loader = jinja2.ChoiceLoader([
   ])
 app.jinja_loader = my_loader
 
+# Import static assets
 from . import assets
+
+# Enable gzip by using flask-compress
+Compress(app)
 
 print(f'###############\nApp is now running on\n{app.config["REQUEST_IP"]}\nwith env {app.config["ENV"]}\n###############')

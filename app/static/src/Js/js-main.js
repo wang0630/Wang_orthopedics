@@ -5,7 +5,7 @@ class Pagination {
     this._ac_per_page = ac_per_page;
     this._announcements = announcements;
     this._isInAuth = isInAuth;
-
+    console.log(announcements);
     // Create idMapping and pass it to Annoucements object
     this.idMapping = {};
     this._announcements.forEach((a, index) => {
