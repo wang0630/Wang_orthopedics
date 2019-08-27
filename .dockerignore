@@ -1,0 +1,25 @@
+# Virtual venv
+env/
+instance/
+
+# Bundle
+app/static/css
+app/static/js
+
+# System gen
+.DS_Store
+.vscode
+**/__pycache__
+**/.webassets-cache
+
+# Secret file
+.env
+
+# gitignore
+.gitignore
+
+# git
+.git
+
+# Readme
+README.md

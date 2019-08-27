@@ -3,7 +3,6 @@ from flask import render_template, request, redirect, url_for, Blueprint
 from math import ceil
 from .data import PTList, targetList, imglist, bonelist
 from . import app
-# APIkey=app.config.get("APIKEY")
 main = Blueprint("main", __name__)
 
 @main.route("/")
