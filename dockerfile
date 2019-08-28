@@ -16,4 +16,4 @@ COPY . .
 
 CMD . env/bin/activate && python3 run.py
 
-EXPOSE 8080
+EXPOSE 5000

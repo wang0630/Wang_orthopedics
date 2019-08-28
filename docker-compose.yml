@@ -1,0 +1,36 @@
+version: "3.7"
+
+services:
+  nginx:
+    image: nginx:lastest
+    container_name: wang-nginx
+    networks: 
+      - with-nginx
+    depends_on:
+      - wang
+    ports:
+      - 80:80
+  
+  wang:
+    # The current dir is the build context
+    build: .
+    container_name: wang
+    networks:
+      with-nginx:
+        alias:
+          - wang
+      with-mongo:
+        alias:
+          - wang
+    depends_on:
+      - nginx
+      - db
+    env_file: .env
+
+  db:
+    image: mongo:lastest
+    networks:
+      - with-mongo
+    depends_on:
+      - wang
+
