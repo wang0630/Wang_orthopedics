@@ -1,9 +1,8 @@
-from flask import render_template, request, redirect, url_for, Blueprint
+from flask import render_template, request, redirect, url_for, Blueprint, current_app as app
 from flask_login import login_required, login_user, current_user
 from bson import ObjectId
 from .announcementsForm import AnnouncementsForm
 from .dbService import fetch_all_announcements, post_announcement
-from . import app
 
 announcements = Blueprint(name='announcements', import_name=__name__ , url_prefix='/announcement')
 

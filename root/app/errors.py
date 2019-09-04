@@ -1,5 +1,4 @@
-from flask import render_template, request, redirect, url_for, Blueprint
-from . import app
+from flask import render_template, request, redirect, url_for, Blueprint, current_app as app
 
 errors = Blueprint('errors', __name__)
 

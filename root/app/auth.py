@@ -1,6 +1,6 @@
-from flask import render_template, request, redirect, url_for, Blueprint
+from flask import render_template, request, redirect, url_for, Blueprint, current_app as app
 from flask_login import login_required, login_user, current_user
-from . import lm, app
+from . import lm
 from .admini import Admini
 from .loginForm import LoginForm
 from .announcementsForm import AnnouncementsForm

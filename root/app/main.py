@@ -1,8 +1,8 @@
 # coding: utf-8
-from flask import render_template, request, redirect, url_for, Blueprint
+from flask import render_template, request, redirect, url_for, Blueprint, current_app as app
 from math import ceil
 from .data import PTList, targetList, imglist, bonelist
-from . import app
+
 main = Blueprint("main", __name__)
 
 @main.route("/")
