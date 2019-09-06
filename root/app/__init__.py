@@ -47,5 +47,4 @@ def create_app():
 
   # Enable gzip by using flask-compress
   Compress(app)
-  # print(f'#############\nApp is now running on\n{app.config['REQUEST_IP']}\nwith env {app.config['ENV']}\n##############')
   return app
