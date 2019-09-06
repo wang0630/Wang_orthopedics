@@ -14,10 +14,12 @@ class Pagination {
   }
 
   _createListItem(date, content, title, index) {
+    const dateObj = new Date(date);
+    const datestr = `民國${dateObj.getFullYear() - 1911}/${dateObj.getMonth()}/${dateObj.getDate()}`;
     if (!this._isInAuth) {
       return `<li class="announcement__list__item">
       <div class="announcement__list__item__heading">
-        <span> ${date} </span>
+        <span> ${datestr} </span>
         <span> ${title} </span>
       </div>
       <p class="announcement__list__item__p"> ${content} </p>
@@ -25,7 +27,7 @@ class Pagination {
     } else {
       return `<li class="announcement__list__item">
       <div class="announcement__list__item__heading">
-        <span> ${date} </span>
+        <span> ${datestr} </span>
         <span> ${title} </span>
       </div>
       <p class="announcement__list__item__p"> ${content} </p>
