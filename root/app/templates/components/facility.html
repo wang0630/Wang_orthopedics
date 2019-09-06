@@ -1,3 +1,5 @@
+{% from "macro/responsive-image.html" import responsiveImage as image %}
+
 <article class="facility__article" id="PT">
   <h3 class="facility__article__heading">復健中心</h3>
   <ul class="facility__article__list">
@@ -23,9 +25,7 @@
 </article>
 
 <div class="facility__gallary">
-  {% for img,alt in imglist %}
-  <figure class="facility__item facility__item--{{ loop.index }}">
-    <img src="{{ url_for('static', filename=img) }}" alt="{{ alt }}" class="facility__img">
-  </figure>
+  {% for img, alt in imglist %}
+    {{ image("facility__item facility__item--" + loop.index|string, "facility__img", alt, img) }}
   {% endfor %}
 </div>

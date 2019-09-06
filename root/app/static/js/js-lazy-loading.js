@@ -1,4 +1,4 @@
-class LazyLoading{constructor(){this.images=Array.from(document.querySelectorAll('source,img'));this._config={rootMargin:'50px 0px',threshold:0.01};this._OnIntersecting=this._OnIntersecting.bind(this);}
+class LazyLoading{constructor(){this.images=Array.from(document.querySelectorAll('source,img'));this._config={threshold:0.3};this._OnIntersecting=this._OnIntersecting.bind(this);}
 createObserver(){if('IntersectionObserver'in window){const observer=new IntersectionObserver(this._OnIntersecting,this._config);this.images.forEach(img=>observer.observe(img));}else{this.images.forEach(img=>this._loadImage(img));}}
-_loadImage(img){console.log('load img: ',img);}
-_OnIntersecting(entries,observer){entries.forEach(entry=>{if(entry.isIntersecting){observer.unobserve(entry.target);this._loadImage(entry.target);}});}};
+_loadImage(entry){if(entry.dataset&&entry.dataset.src){entry.src=entry.dataset.src;}else if(entry.dataset&&entry.dataset.srcset){entry.srcset=entry.dataset.srcset;}}
+_OnIntersecting(entries,observer){entries.forEach(entry=>{if(entry.isIntersecting){console.log(entry.target);observer.unobserve(entry.target);this._loadImage(entry.target);}});}};
