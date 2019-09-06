@@ -50,13 +50,13 @@ def post():
 
 
 # For preflight aka CORS
-@announcements.after_request
-@login_required
-def after_request(res):
-  if request.method == 'OPTIONS':
-    header = res.header
-    print(f'Original header: {header}')
-    header['Access-Control-Allow-Methods'] = ['GET', 'POST', 'DELETE']
-    header['Access-Control-Allow-Headers'] = '*'
+# @announcements.before_request
+# @login_required
+# def before_request(res):
+#   if request.method == 'OPTIONS':
+#     header = res.header
+#     print(f'Original header: {header}')
+#     header['Access-Control-Allow-Methods'] = ['GET', 'POST', 'DELETE']
+#     header['Access-Control-Allow-Headers'] = '*'
   
-  return res
+#   return res

@@ -26,7 +26,10 @@ def create_assets(app):
                                     output='js/js-mutation-observer.js'),
     'js-announcements': Bundle('js-announcements.js',
                                     filters='jsmin',
-                                    output='js/js-announcements.js'),              
+                                    output='js/js-announcements.js'),
+    'js-lazy-loading':  Bundle('js-lazy-loading.js',
+                                    filters='jsmin',
+                                    output='js/js-lazy-loading.js'),     
   }
 
   assets.register(bundles)

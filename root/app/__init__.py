@@ -1,4 +1,5 @@
 import jinja2
+import os
 from flask import Flask
 from flask_login import LoginManager
 from flask_compress import Compress
@@ -13,6 +14,8 @@ def create_app():
 
   # Import config after the dotenv
   from .config import Config
+
+  # app.logger.info(os.environ)
   app.config.from_object(Config)
 
   lm.init_app(app)
@@ -44,5 +47,5 @@ def create_app():
 
   # Enable gzip by using flask-compress
   Compress(app)
-  print(f'###############\nApp is now running on\n{app.config["REQUEST_IP"]}\nwith env {app.config["ENV"]}\n###############')
+  # print(f'#############\nApp is now running on\n{app.config['REQUEST_IP']}\nwith env {app.config['ENV']}\n##############')
   return app

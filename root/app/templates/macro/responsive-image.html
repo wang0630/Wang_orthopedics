@@ -1,0 +1,20 @@
+{% macro responsiveImage(picture_class, img_class, altname, which)  %}
+  <picture class="{{ picture_class }}">
+    {# {{ ... }} is a Python expression, so ('img/' + which) can work #}
+    {# source specifies the media condition for pictures #}
+    {# iponeX has DPR 3x, this means every dimension in css pixel is 3 times big #}
+    {# For ex, if the div is 300x200, then it will be 900x600 in iphoneX #}
+    {# So we need a bigger picture for that #}
+    <source
+      media="(max-width: 390px)"
+      data-srcset="{{ url_for('static', filename='img/'+ which + '-2x.jpg') }} 2x,
+              {{ url_for('static', filename='img/'+ which + '-3x.jpg') }} 3x"
+    >
+    <img
+      src="{{ url_for('static', filename='img/placeholder.png') }}"
+      data-src="{{ url_for('static', filename='img/'+ which + '-3x.jpg') }}"
+      alt="{{ altname }}"
+      class="{{ img_class }}"
+    >
+  </picture>
+{% endmacro %}

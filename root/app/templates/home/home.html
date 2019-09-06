@@ -20,6 +20,9 @@
   {% assets "js-main" %}
   <script type="application/javascript" src="{{ ASSET_URL }}"></script>
   {% endassets %}
+  {% assets "js-lazy-loading" %}
+  <script type="application/javascript" src="{{ ASSET_URL }}"></script>
+  {% endassets %}
   <script type="application/javascript" async>
     const announcements = {{ announcements | tojson }};
     const ac_per_page = {{ ac_per_page }};
@@ -27,5 +30,10 @@
     const pagination = new Pagination(announcements, ac_per_page, false);
     pagination.renderInit();
     pagination.addPagination();
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const lazy = new LazyLoading();
+      lazy.createObserver();
+    });
   </script>
 {% endblock %}

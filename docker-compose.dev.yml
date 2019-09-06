@@ -27,7 +27,8 @@ services:
           - wang
     depends_on:
       - db
-    env_file: .env
+    env_file:
+      - .env
     volumes:
       - ./root/app:/wang-orthopedics/app
 
