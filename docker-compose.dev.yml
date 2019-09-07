@@ -3,13 +3,13 @@ version: "3.7"
 services:
   nginx:
     image: nginx:latest
-    container_name: wang-nginx
+    container_name: wang-nginx-dev
     networks:
       - with-nginx
     depends_on:
       - wang
     volumes:
-      - ./nginx/wang.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/wang.dev.conf:/etc/nginx/conf.d/default.conf
     ports:
       - 80:80
   
@@ -17,7 +17,8 @@ services:
     # The current dir is the build context
     build:
       context: ./root
-    container_name: wang
+      dockerfile: dockerfile.dev
+    container_name: wang-dev
     networks:
       with-nginx:
         aliases:
@@ -28,12 +29,13 @@ services:
     depends_on:
       - db
     env_file:
-      - .env
+      - .env-dev
     volumes:
       - ./root/app:/wang-orthopedics/app
 
   db:
     image: mongo:latest
+    container_name: wang-db-dev
     networks:
       with-mongo:
         aliases:

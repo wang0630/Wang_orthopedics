@@ -1,0 +1,47 @@
+version: "3.7"
+
+services:
+  nginx-prod:
+    image: nginx:latest
+    container_name: wang-nginx-prod
+    networks:
+      - with-nginx
+    depends_on:
+      - wang-prod
+    volumes:
+      - ./nginx/wang.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - 80:80
+  
+  wang-prod:
+    # The current dir is the build context
+    build:
+      context: ./root
+    container_name: wang-prod
+    networks:
+      with-nginx:
+        aliases:
+          - wang
+      with-mongo:
+        aliases:
+          - wang
+    depends_on:
+      - db-prod
+    volumes:
+      - ./root/app:/wang-orthopedics/app
+    env_file:
+      - .env
+
+  db-prod:
+    image: mongo:latest
+    container_name: wang-db-prod
+    networks:
+      with-mongo:
+        aliases:
+          - mongo
+    volumes:
+      - ./mongodata:/data/db
+
+networks:
+  with-nginx:
+  with-mongo:

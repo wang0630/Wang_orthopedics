@@ -14,4 +14,7 @@ __pycache__
 .webassets-cache
 
 # Secret file
-.env
+.env*
+
+# mounted volume
+mongodata

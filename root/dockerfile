@@ -2,13 +2,14 @@ FROM python:3.7
 
 ARG rootPath=/wang-orthopedics
 
+RUN mkdir -p ${rootPath}
+
 WORKDIR ${rootPath}
 
-# Copy the requirements.txt to the upper folder
-COPY requirements.txt run.py ./
+COPY requirements.txt .
 
 RUN python3 -m venv env \
   && . env/bin/activate \
   && pip3 install -r requirements.txt
 
-CMD . env/bin/activate && flask run --host 0.0.0.0
+CMD . env/bin/activate && gunicorn -w 4 -b 0.0.0.0:5000 "app:create_app()"

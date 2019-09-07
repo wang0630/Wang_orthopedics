@@ -15,5 +15,5 @@ class Config:
   AC_PER_PAGE = 4
   # Development
   ENV=os.environ.get('FLASK_ENV')
-  REQUEST_IP=os.environ.get('LOCALHOSTT', 'no localhosttt')
+  REQUEST_IP=os.environ.get('REQUEST')
   
