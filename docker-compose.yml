@@ -1,7 +1,7 @@
 version: "3.7"
 
 services:
-  nginx-prod:
+  wang-nginx-prod:
     image: nginx:latest
     container_name: wang-nginx-prod
     networks:
@@ -10,9 +10,11 @@ services:
       - wang-prod
     volumes:
       - ./nginx/wang.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/backend.conf:/etc/nginx/backend.conf
+      - ./root/app/static:/home/static
     ports:
       - 80:80
-  
+
   wang-prod:
     # The current dir is the build context
     build:
