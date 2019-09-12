@@ -13,10 +13,10 @@
     // min-content  符合圖片即可
     // 最大只能10rem, 但最小不可以小於內容
     // 要不然會overflow
-    template-rows: repeat(5,min-content);
+    // template-rows: repeat(5, min-content);
     // always 70% of viewwidth
     // shrink with viewwidth
-    template-columns: 70vw;
+    template-columns: 80vw;
     row-gap: 2rem;
   }
   align-content: center;
@@ -33,18 +33,30 @@
     @include animation-move-down();
   }
   &__text{
-    &--1{
+    &--ani-down{
       @include animation-move-down();
       font-weight: 400;
-      font-size: 5rem;
+      font-size: 4.5rem;
       color:$color-border;
       line-height: 3.3rem;
       align-self: flex-start; // let the container of text shrink
     }
-    &--2{
+    &--ani-right{
       @include animation-move-right();
-      color:#FFf;
-      font-size:2rem;
+      color:#FFF;
+      font-size: 2rem;
+    }
+
+    &--media-info {
+      display: none;
+      font-weight: 400;
+      & p:not(:last-child) {
+        margin-right: 2rem;
+      }
+      // Only shows up if viewport < 850px
+      @include respond(break-beta) {
+        display: flex;
+      }
     }
 
   }
