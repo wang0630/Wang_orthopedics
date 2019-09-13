@@ -27,7 +27,3 @@ def boneMassMeasurement():
 @main.route("/google8029c7599236ab79.html")
 def comfirm():
   return render_template("google8029c7599236ab79.html")
-
-@main.route("/sitemap.xml")
-def sitemap():
-  return render_template("sitemap.xml")
