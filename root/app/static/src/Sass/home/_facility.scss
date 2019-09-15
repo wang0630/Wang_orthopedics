@@ -4,7 +4,7 @@
     grid-column:full-start/col-start 5;
     display:grid;
     grid-template-rows: 1fr 3fr 1fr 3fr;
-    background-color: #cf9f64;
+    background-color: $color-PT-background;
     @include respond(break-alpha){
       grid-column: full-start/full-end;
     }
@@ -73,7 +73,7 @@
     background-color: #fff;
     padding:1.5rem;
     display: grid;
-    grid:{
+    grid: {
       column:col-start 5/full-end;
       template-rows: unquote('repeat(6,[row-start] 1fr [row-end])');
       template-columns: unquote('repeat(6,[col-start] 1fr [col-end])');
