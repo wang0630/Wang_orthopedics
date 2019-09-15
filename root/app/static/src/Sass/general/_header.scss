@@ -50,7 +50,10 @@
     &--media-info {
       display: none;
       font-weight: 400;
-      & p:not(:last-child) {
+      & a {
+        color: currentColor;
+      }
+      & a:not(:last-child) {
         margin-right: 2rem;
       }
       // Only shows up if viewport < 850px
