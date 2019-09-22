@@ -1,5 +1,6 @@
 from flask import render_template, request, redirect, url_for, Blueprint, current_app as app
 from flask_login import login_required
+from .data import input_info
 
 columns = Blueprint(name='columns', import_name=__name__ , url_prefix='/columns')
 
@@ -10,7 +11,7 @@ def get_columns():
 
 @columns.route('/editor', methods=['GET'])
 def get_editor():
-  return render_template('editor/editor.html')
+  return render_template('editor/editor.html', input_info=input_info)
 
 @columns.route('/<id>', methods=['GET'])
 def get_one_column(id):

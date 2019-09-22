@@ -1,17 +1,18 @@
-{% extends "base/base.html" %}
+{% from 'macro/input-group.html' import input_group %}
+{% from 'macro/buttons.html' import button_submit  %}
+{% extends 'base/base.html' %}
 {% block head %}
   {{ super() }}
   <script src="https://unpkg.com/axios/dist/axios.min.js" async></script>
 {% endblock %}
 {% block body %}
   <main class="editor">
-    <div class="input-group">
-        <label for="prefered-name"> 您的暱稱 </label>
-        <input name="prefered-name" type="text" />
-    </div>
+    {{ input_group(['input-group', 'editor__input'], input_info) }}
     <article class="editor__main">
+      bitch
     </article>
-    <button> 確定送出 </button>
-      
+    <div class="editor__button-group">
+        {{ button_submit() }}
+    </div>
   </main>
 {% endblock %}

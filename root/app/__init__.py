@@ -43,6 +43,12 @@ def create_app():
     ])
   app.jinja_loader = my_loader
 
+  def concat_lists(a, b):
+    return [*a, *b]
+
+  # Add customed filters by adding our functions to DEFAULT_FILTERS object
+  jinja2.environment.DEFAULT_FILTERS['concat_lists'] = concat_lists
+
   # Import static assets
   from .assets import create_assets
   create_assets(app)

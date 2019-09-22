@@ -1,3 +1,15 @@
 .editor {
   @include overall-layout(editor, 3);
+  &__input {
+    grid-row: 1/2;
+    grid-column: center-start/center-end;
+  }
+  &__main {
+    grid-row: 2/3;
+    grid-column: center-start/center-end;
+  }
+  &__button-group {
+    grid-row: 3/4;
+    grid-column: center-start/center-end;
+  }
 }

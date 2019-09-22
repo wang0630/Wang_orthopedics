@@ -4,5 +4,5 @@ errors = Blueprint('errors', __name__)
 
 @errors.app_errorhandler(Exception)
 def globalError(error):
-  app.logger.error(request.base_url)
-  return 'smt is wrong', 500
+  print(error)
+  return error.message, 500
