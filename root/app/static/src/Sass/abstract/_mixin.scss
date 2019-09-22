@@ -1,32 +1,8 @@
-@mixin dimension($height:100%, $width:100%) {
-  height:$height;
-  width:$width;
-}
-
-@mixin flex-hor($jus:flex-start, $ali:flex-start) {
-  display: flex;
-  align-items: $ali;
-  justify-content: $jus;
-}
-
-@mixin flex-ver($jus:flex-start, $ali:flex-start) {
-  display: flex;
-  flex-direction: column;
-  align-items: $ali;
-  justify-content: $jus;
-}
-
 @mixin grid-child($row, $column){
   grid: {
     row:$row;
     column:$column;
   }
-}
-
-@mixin grid-self($jus:auto, $ali:auto){
-  // auto: Default. The element inherits its parent container's align-items property, or "stretch" if it has no parent container
-  align-self: $ali;
-  justify-self: $jus;
 }
 
 @mixin grid-parent($trow, $tcol) {
@@ -37,19 +13,16 @@
   }
 }
 
-@mixin grid-items($jus-items:stretch, $ali-items:stretch) {
-  align-items: $ali-items;
-  justify-items: $jus-items;
-}
-
 // ------------------- Layout ---------------------------
-@mixin overall-layout($page, $componentsCountWithoutMedia, $componentsCountWithMedia) {
+@mixin overall-layout($page, $componentsCountWithoutMedia, $componentsCountWithMedia: null) {
   display: grid;
   @if $page == "main" {
     grid-template-rows: 80vh repeat($componentsCountWithoutMedia, min-content);
-  } @else {
+  } @else if $page == "login-main"{
     // For login main page
     grid-template-rows: minmax(65vh, min-content) 35vh;
+  } @else if $page == "editor" {
+
   }
   grid-template-columns: unquote("[full-start] minmax(4rem,1fr) [center-start] repeat(8,[col-start] minmax(min-content,14rem) [col-end]) [center-end] minmax(4rem,1fr) [full-end]");
   @include respond(break-alpha, $componentsCountWithMedia) {
@@ -58,7 +31,6 @@
       Mixin does not pass any argumenets to the @content block,
       So (1) we pass $componentsCountWithMedia to respond first
     */
-    // grid-template-rows: repeat($componentsCountWithMedia , min-content);
   }
 }
 

@@ -40,12 +40,13 @@
     }
 
     &__timegroup{
-      @include flex-hor();
+      display: flex;
     }
 
     &__time{
       color:#fff;
-      @include flex-ver();
+      display: flex;
+      flex-direction: column;
       &--red{
         margin-right:2rem;
         // make it red
@@ -85,7 +86,8 @@
   }
 
   &__img{
-    @include dimension();
+    height: 100%;
+    width: 100%;
     // remove extra little white space
     display: block;
     object-fit: cover;

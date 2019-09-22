@@ -1,6 +1,6 @@
 .info{
   &__infos{
-    @include grid-child( unquote("2/3"), full-start/col-end 4);
+    @include grid-child(unquote("2/3"), full-start/col-end 4);
     @include grid-parent(repeat(3,15rem),minmax(min-content,max-content));
     @include respond(break-alpha){
       @include grid-parent(repeat(3,8rem),minmax(min-content,max-content));

@@ -26,6 +26,7 @@ def create_app():
   from .main import main
   from .auth import auth
   from .announcements import announcements
+  from .column import columns
   from .errors import errors
 
   # register blueprint
@@ -33,6 +34,7 @@ def create_app():
   app.register_blueprint(auth)
   app.register_blueprint(announcements)
   app.register_blueprint(errors)
+  app.register_blueprint(columns)
 
   my_loader = jinja2.ChoiceLoader([
       app.jinja_loader,

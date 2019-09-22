@@ -13,6 +13,7 @@ auth = Blueprint('auth', __name__)
 @auth.route('/loginMain', methods=['GET'])
 @login_required
 def login_main():
+  app.logger.info(request.cookies)
   form = AnnouncementsForm()
   # Fetch existing announcement from db
   # transform Objectid to string
@@ -58,7 +59,7 @@ def login():
     # Check if admini exists and the password
     if not admini_doc or not Admini.validate_password(admini_doc['password'], form.password.data):
       # Password is not correct or admini name not exists
-      # Flash the message(not working)
+      # Flash the message
       # Because flashed messages are for the next request
       error_msgs.append(u'帳號或密碼錯誤，請重新輸入')
       return render_template('login/loginForm.html', form=form, error_msgs=error_msgs)

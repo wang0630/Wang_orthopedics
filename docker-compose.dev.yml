@@ -40,7 +40,8 @@ services:
       with-mongo:
         aliases:
           - mongo
-
+    volumes:
+      - ./mongodata:/data/db
 
 
 networks:
