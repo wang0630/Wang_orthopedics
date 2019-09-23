@@ -7,9 +7,23 @@
 {% endblock %}
 {% block body %}
   <main class="editor">
-    {{ input_group(['input-group', 'editor__input'], input_info) }}
-    <article class="editor__main">
-      bitch
+    {{ input_group(['editor__input'], input_info) }}
+    <div class="editor__icons">
+      <figure class="button--editor">
+          <div>
+              <img src="{{ url_for('static', filename='img/icon/picture.png') }}">
+          </div>
+          <figcaption> 照片 </figcaption>
+      </figure>
+      <figure class="button--editor">
+          <div>
+            <img src="{{ url_for('static', filename='img/icon/bold.png') }}">
+          </div>
+          <figcaption> 粗體 </figcaption>
+      </figure>
+    </div>
+    <article class="editor__main" contenteditable="true">
+      寫點東西吧！
     </article>
     <div class="editor__button-group">
         {{ button_submit() }}

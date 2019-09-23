@@ -1,5 +1,5 @@
 {% macro input_group(input_group_classes, input_info) %}
-  {% set classes = ['input_group'] %}
+  {% set classes = ['input-group'] %}
   <div class="{{ classes | concat_lists(input_group_classes) | join(' ') }}">
     {% for info in input_info %}
       <label for="{{ info.name }}"> {{ info.text }} </label>
