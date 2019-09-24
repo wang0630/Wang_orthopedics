@@ -9,13 +9,14 @@
   <main class="editor">
     {{ input_group(['editor__input'], input_info) }}
     <div class="editor__icons">
-      <figure class="button--editor">
+      <label class="button--editor" for="photoes">
           <div>
               <img src="{{ url_for('static', filename='img/icon/picture.png') }}">
           </div>
-          <figcaption> 照片 </figcaption>
-      </figure>
-      <figure class="button--editor">
+          <span> 圖片 </span>
+      </label>
+      <input name="photoes[]" type="file" id="photoes" class="remove-input" accept="image/*" >
+      <figure class="button--editor" id="bold">
           <div>
             <img src="{{ url_for('static', filename='img/icon/bold.png') }}">
           </div>
@@ -23,10 +24,15 @@
       </figure>
     </div>
     <article class="editor__main" contenteditable="true">
-      寫點東西吧！
+      <p>寫點東西吧！</p>
     </article>
     <div class="editor__button-group">
         {{ button_submit() }}
     </div>
   </main>
+{% endblock %}
+{% block myScript %}
+  {% assets "js-editor" %}
+  <script type="application/javascript" src="{{ ASSET_URL }}"></script>
+  {% endassets %}
 {% endblock %}

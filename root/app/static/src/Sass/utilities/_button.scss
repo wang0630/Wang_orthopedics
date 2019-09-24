@@ -1,7 +1,12 @@
 .button {
   border: none;
   &--submit {
-
+    border: 1px solid $color-green-dark;
+    border-radius: 3px;
+    padding: 1rem;
+    background-color: white;
+    color: $color-green-dark;
+    cursor: pointer;
   }
   &--editor {
     font-size: 2rem;

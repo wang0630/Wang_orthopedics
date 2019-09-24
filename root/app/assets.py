@@ -29,7 +29,10 @@ def create_assets(app):
                                     output='js/js-announcements.js'),
     'js-lazy-loading':  Bundle('js-lazy-loading.js',
                                     filters='jsmin',
-                                    output='js/js-lazy-loading.js'),     
+                                    output='js/js-lazy-loading.js'),
+    'js-editor':  Bundle('js-editor.js',
+                                    filters='jsmin',
+                                    output='js/js-editor.js'),                        
   }
 
   assets.register(bundles)

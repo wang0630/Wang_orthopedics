@@ -12,11 +12,6 @@
     display: flex;
     align-items: center;
   }
-  &__main {
-    grid-row: 3/4;
-    grid-column: center-start/center-end;
-    font-size: 2.5rem;
-  }
   &__button-group {
     grid-row: 4/5;
     grid-column: center-start/center-end;
@@ -25,5 +20,21 @@
     grid-row: 2/3;
     grid-column: center-start/center-end;
     display: flex;
+  }
+  &__main {
+    grid-row: 3/4;
+    grid-column: center-start/center-end;
+    font-size: 2.5rem;
+    padding: 2.5rem;
+    outline: 1px solid #888;
+    line-height: 4rem;
+  }
+
+  &__figure {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }

@@ -4,7 +4,7 @@ instance/
 
 # Bundle
 style.css
-app/static/js
+root/app/static/js
 
 # System gen
 .DS_Store
