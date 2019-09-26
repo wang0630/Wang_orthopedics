@@ -10,7 +10,7 @@ bonelist = [('img/xray.jpg',u'X光機組'),("img/bmm.jpg",u'骨質密度檢測�
 # for editor default
 input_info = [
   {
-    'name': 'preferred-name',
+    'name': 'author',
     'text': u'您的暱稱',
     'type': 'text',
   }

@@ -26,7 +26,7 @@ def create_app():
   from .main import main
   from .auth import auth
   from .announcements import announcements
-  from .column import columns
+  from .columns import columns
   from .errors import errors
 
   # register blueprint

@@ -13,6 +13,7 @@ class Config:
   MONGO_COLLECTION_ANNOUNCEMENT = MONGO_DB['announcement']
   # Some constant
   AC_PER_PAGE = 4
+  EDITOR_POST_LIMIT = 10
   # Development
   ENV=os.environ.get('FLASK_ENV')
   REQUEST_IP=os.environ.get('REQUEST')

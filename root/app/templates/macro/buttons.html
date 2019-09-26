@@ -1,4 +1,4 @@
 {% macro button_submit(more_classes=[]) %}
   {% set classes = ['button', 'button--submit'] %}
-  <button class="{{ classes | concat_lists(more_classes) | join(' ') }}"> 確定送出 </button>
+  <button class="{{ classes | concat_lists(more_classes) | join(' ') }}" id="button-submit"> 確定送出 </button>
 {% endmacro %}

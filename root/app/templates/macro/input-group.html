@@ -3,7 +3,7 @@
   <div class="{{ classes | concat_lists(input_group_classes) | join(' ') }}">
     {% for info in input_info %}
       <label for="{{ info.name }}"> {{ info.text }} </label>
-      <input id="{{ info.name }}" type="{{ info.type }}" />
+      <input id="{{ info.name }}" type="{{ info.type }}" name="{{ info.name }}"/>
     {% endfor %}
   </div>
 {% endmacro %}

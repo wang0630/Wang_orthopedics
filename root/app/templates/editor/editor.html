@@ -24,7 +24,6 @@
       </figure>
     </div>
     <article class="editor__main" contenteditable="true">
-      <p>寫點東西吧！</p>
     </article>
     <div class="editor__button-group">
         {{ button_submit() }}
@@ -35,4 +34,9 @@
   {% assets "js-editor" %}
   <script type="application/javascript" src="{{ ASSET_URL }}"></script>
   {% endassets %}
+  <script type="application/javascript" async>
+    const ip = '{{ request_ip }}';
+    const editor_post_limit = {{ editor_post_limit }};
+    addSubmitHandler(ip, editor_post_limit);
+  </script>
 {% endblock %}
