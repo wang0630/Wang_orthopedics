@@ -1,0 +1,10 @@
+{% from 'macro/listing.html' import listing %}
+{% extends 'base/base.html' %}
+{% block body %}
+  <main class="columns">
+    <ul class="columns__recently-viewed list-items-column-small">
+      bitch
+    </ul>
+    {{ listing('columns', columns_info, ['columns__main']) }}
+  </main>
+{% endblock %}

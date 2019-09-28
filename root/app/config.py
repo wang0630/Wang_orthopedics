@@ -11,6 +11,7 @@ class Config:
   MONGO_DB = MongoClient(MONGO_URL)[DB_NAME]
   MONGO_COLLECTION_ADMINI = MONGO_DB['admini']
   MONGO_COLLECTION_ANNOUNCEMENT = MONGO_DB['announcement']
+  MONGO_COLLECTION_COLUMN = MONGO_DB['column']
   # Some constant
   AC_PER_PAGE = 4
   EDITOR_POST_LIMIT = 10

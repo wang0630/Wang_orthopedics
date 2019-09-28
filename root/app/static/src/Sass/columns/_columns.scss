@@ -1,0 +1,16 @@
+.columns {
+  @include overall-layout(columns);
+  min-height: 100vh;
+  &__recently-viewed {
+    grid-row: 1/2;
+    grid-column: center-start/center-end;
+  }
+  &__main {
+    grid-row: 2/3;
+    grid-column: center-start/center-end;
+  }
+  &__item {
+    display: flex;
+    flex-direction: column;
+  }
+}

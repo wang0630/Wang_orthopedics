@@ -1,4 +1,5 @@
 from os.path import join, dirname
+from datetime import datetime
 from uuid import uuid4
 from flask import render_template, request, redirect, url_for, Blueprint, current_app as app
 from flask_login import login_required
@@ -6,13 +7,19 @@ from w3lib.url import parse_data_uri
 from boto3 import client
 from botocore.exceptions import ClientError
 from .data import input_info
+from .dbService import insert_single_doc, fetch_columns_info
 
 columns = Blueprint(name='columns', import_name=__name__ , url_prefix='/columns')
 
 # Server-side rendered
 @columns.route('', methods=['GET'])
 def get_columns():
-  return render_template('columns/columns-main.html')
+  # Get query string, default to 1
+  page = int(request.args.get('page', 1))
+  # Pagination according to the page string
+  columns_info = fetch_columns_info(app.config['MONGO_COLLECTION_COLUMN'], page)
+  # Retrieve columns info from db
+  return render_template('columns/columns.html', columns_info=columns_info)
 
 @columns.route('/editor', methods=['GET'])
 def get_editor():
@@ -43,6 +50,7 @@ def create_column():
         post_document = {
           'author': request.json.get('author'),
           'content': request.json.get('content'),
+          'date': datetime.today(),
           'imgurl': [],
         }
         if post['base64s']:
@@ -66,16 +74,17 @@ def create_column():
                 Key=file_name,
                 ContentType=result[0],
               )
-              post_document['imgurl'].append(file_name)
+              post_document['imgurl'].append(file_name)  
             else:
               raise ValueError('The img should be jpeg or png')
-          
+        # Insert the column into DB
+        insert_single_doc(app.config['MONGO_COLLECTION_COLUMN'], post_document)
+        return '', 204
       except ValueError as e:
         raise ValueError(e.args[0])
       except ClientError as e:
         print(e.args)
         return e.args[0], 500
-      return '', 204
     else:
       return 'Request should be json', 406
   except ValueError as e:
@@ -84,10 +93,3 @@ def create_column():
     return e.args[0], 500
   except Exception as e:
     return e.args[0], 500
-  # upload to aws
-  # return successful
-
-@columns.route('/upload', methods=['POST'])
-def upload_image():
-  pass
-

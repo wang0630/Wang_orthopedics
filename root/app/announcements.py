@@ -2,7 +2,7 @@ from flask import render_template, request, redirect, url_for, Blueprint, curren
 from flask_login import login_required, login_user, current_user
 from bson import ObjectId
 from .announcementsForm import AnnouncementsForm
-from .dbService import fetch_all_announcements, post_announcement
+from .dbService import fetch_all_announcements, insert_single_doc
 
 announcements = Blueprint(name='announcements', import_name=__name__ , url_prefix='/announcement')
 
@@ -44,7 +44,7 @@ def post():
       'date': form.date.data,
       'content': form.content.data,
     }
-    post_announcement(app.config['MONGO_COLLECTION_ANNOUNCEMENT'], announcement)
+    insert_single_doc(app.config['MONGO_COLLECTION_ANNOUNCEMENT'], announcement)
     return redirect(url_for('auth.login_main'))
 
 

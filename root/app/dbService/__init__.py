@@ -21,7 +21,34 @@ def fetch_all_announcements(collection, per_page):
   print(announcements)
   return announcements, total_pages
 
-def post_announcement(collection, announcement):
-  print(announcement)
-  result = collection.insert_one(announcement)
+def fetch_columns_info(collection, page):
+  PER_PAGE = 4
+  agg = collection.aggregate([
+    {
+      '$skip': PER_PAGE * (page - 1)
+    },
+    {
+      '$limit': PER_PAGE
+    },
+    {
+      '$addFields': {
+        'id': {
+          '$toString': '$_id'
+        } 
+      }
+    },
+    {
+      '$project': {
+        '_id': 0,
+        'content': 0,
+        'imgurl': 0,
+      }
+    }
+  ])
+  return list(agg)
+
+
+def insert_single_doc(collection, target_doc):
+  print(target_doc)
+  result = collection.insert_one(target_doc)
   return result.inserted_id
