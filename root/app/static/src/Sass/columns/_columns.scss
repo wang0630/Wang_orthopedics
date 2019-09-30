@@ -10,7 +10,29 @@
     grid-column: center-start/center-end;
   }
   &__item {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: 3fr 2fr;
+    grid-template-columns: 4fr 1fr;
+    border: 2px solid $color-green-dark;
+    border-radius: 3rem;
+    padding: 3rem;
+
+    & > * {
+      display: flex;
+      align-items: center;
+    }
+
+    & a {
+      grid-row: 1/2;
+      grid-column: 1/2;
+    }
+
+    // For author name
+    & span:first-of-type {
+      font-weight: 400;
+      font-size: 4rem;
+      grid-row: 1/2;
+      grid-column: 2/3;
+    }
   }
 }

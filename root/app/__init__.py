@@ -1,9 +1,15 @@
 import jinja2
-import os
+from sys import path as sys_path
+from os.path import join, dirname
 from flask import Flask
 from flask_login import LoginManager
 from flask_compress import Compress
 from pathlib import Path
+
+# Imporant!!!
+# Make /wang-orthopedics/app be in the path of sys.path
+# So we can import siblings package
+sys_path.append(join(dirname(__file__)))
 
 # flask_loging setup
 lm = LoginManager()

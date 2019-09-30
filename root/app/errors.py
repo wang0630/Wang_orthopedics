@@ -4,5 +4,5 @@ errors = Blueprint('errors', __name__)
 
 @errors.app_errorhandler(Exception)
 def globalError(error):
-  print(error)
-  return error.args[0], 500
+  print(f'error: {error}')
+  return 'nope', 500

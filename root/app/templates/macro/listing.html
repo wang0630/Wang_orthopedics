@@ -1,21 +1,23 @@
 {% macro columnItem(title, author, date) %}
   <li class="columns__item">
-    <span> {{ title }} </span>
+    <a> {{ title }} </a>
     <span> {{ author }} </span>
     <span> {{ date }}  </span>
   </li>
 {% endmacro %}
 
-{% macro listing(category, targets, wrapper_classes=[]) %}
+{% macro listing(title, category, targets, wrapper_classes=[]) %}
 {% set classes = ['list-items-column-large'] %}
   <section class="{{ classes | concat_lists(wrapper_classes) | join(' ') }}">
+    <h3> {{ title }} </h3>
     <ol class="list-items-column-large__ol">
       {% for target in targets %}
         {{ columnItem(target.title, target.author, target.date) }}
       {% endfor %}
     </ol>
-    <div class="pagination columns__pagination">
-      bitch
+    <div class="pagination">
+      <button type="button" class="button button--arrow" id="previous"> 上一頁 &larr; </button>
+      <button type="button" class="button button--arrow" id="next"> 下一頁 &rarr; </button>
     </div>
   </section>
 {% endmacro %}

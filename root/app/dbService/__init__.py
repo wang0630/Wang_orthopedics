@@ -1,4 +1,5 @@
 from math import ceil
+from helpers.convert_date import convert_date_to_roc
 
 def fetch_all_announcements(collection, per_page):
   agg = collection.aggregate([
@@ -15,8 +16,7 @@ def fetch_all_announcements(collection, per_page):
     }
   ])
   announcements = list(agg)
-  for a in announcements:
-    a['date'] = f"{a['date'].year}/{a['date'].month}/{a['date'].day}"
+  convert_date_to_roc(announcements)
   total_pages = ceil(len(announcements) / per_page)
   print(announcements)
   return announcements, total_pages
@@ -45,7 +45,9 @@ def fetch_columns_info(collection, page):
       }
     }
   ])
-  return list(agg)
+  columns = list(agg)
+  convert_date_to_roc(columns)
+  return columns
 
 
 def insert_single_doc(collection, target_doc):

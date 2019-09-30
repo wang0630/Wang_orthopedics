@@ -32,7 +32,10 @@ def create_assets(app):
                                     output='js/js-lazy-loading.js'),
     'js-editor':  Bundle('js-editor.js',
                                     filters='jsmin',
-                                    output='js/js-editor.js'),                        
+                                    output='js/js-editor.js'),
+    'js-pagination-arrow': Bundle('js-pagination-arrow.js',
+                                    filters='jsmin',
+                                    output='js/js-pagination-arrow.js'),                                       
   }
 
   assets.register(bundles)

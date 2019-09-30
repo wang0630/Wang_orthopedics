@@ -28,4 +28,11 @@
       object-fit: cover;
     }
   }
+
+  &--arrow {
+    color: $color-green-dark;
+    background-color: white;
+    font-size: 2.5rem;
+    cursor:pointer;
+  }
 }

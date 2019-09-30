@@ -5,6 +5,12 @@
     <ul class="columns__recently-viewed list-items-column-small">
       bitch
     </ul>
-    {{ listing('columns', columns_info, ['columns__main']) }}
+    {{ listing('醫學新知' ,'columns', columns_info, ['columns__main']) }}
   </main>
 {% endblock %}
+{% block myScript %}
+  {% assets "js-pagination-arrow" %}
+  <script type="application/javascript" src="{{ ASSET_URL }}"></script>
+  {% endassets %}
+{% endblock %}
+ 
