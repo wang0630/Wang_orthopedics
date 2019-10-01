@@ -2,7 +2,7 @@ from os.path import join, dirname
 from datetime import datetime
 from uuid import uuid4
 from bson.objectid import ObjectId
-from flask import render_template, request, redirect, url_for, Blueprint, current_app as app
+from flask import render_template, request, redirect, url_for, Blueprint, Markup,current_app as app
 from flask_login import login_required
 import werkzeug.exceptions as WE
 from w3lib.url import parse_data_uri
@@ -43,6 +43,10 @@ def get_one_column(id):
       { '_id': ObjectId(id) },
       { '_id': 0 },
       )
+    if not column_doc:
+      WE.abort(404)
+    # Mark the html as safe, so jinja2 will not escape it
+    column_doc['content'] = Markup(column_doc['content'])
     return render_template(
       'columns/column_show.html',
       column_doc=column_doc
@@ -115,7 +119,7 @@ def bad_request(e):
 
 @columns.errorhandler(WE.NotFound)
 def not_found(e):
-  return 'OOPS, 找不到此頁面', 404
+  return 'OOPS, 找不到這篇專欄喔！', 404
 
 @columns.errorhandler(WE.NotAcceptable)
 def not_acceptable(e):
