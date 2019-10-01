@@ -13,5 +13,10 @@ input_info = [
     'name': 'author',
     'text': u'您的暱稱',
     'type': 'text',
-  }
+  },
+  {
+    'name': 'title',
+    'text': u'文章title',
+    'type': 'text',
+  },
 ]

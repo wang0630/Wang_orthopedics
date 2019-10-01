@@ -4,6 +4,7 @@ const bold = document.querySelector('#bold');
 const submit = document.querySelector('#button-submit');
 const article = document.querySelector('.editor__main');
 const authorInput = document.querySelector('#author');
+const titleInput = document.querySelector('#title');
 
 const queuedFiles = [];
 
@@ -73,19 +74,20 @@ function addSubmitHandler (ip, editorPostLimit) {
   submit.addEventListener('click', async () => {
     try {
       // Check if the author name and article is empty
-      if (authorInput && article.textContent.length > editorPostLimit) {
+      if (authorInput.value && titleInput.value && article.textContent.length > editorPostLimit) {
         const completeIp = `${ip}/columns`;
         // Remove dataURL from img src
         const parsedhtml = traverseRemoveImg();
         data = {
           author: authorInput.value,
+          title: titleInput.value,
           base64s: queuedFiles,
           content: parsedhtml, 
         };
         const res = await axios.post(completeIp, data);
         console.log(res);
       } else {
-        // show error panel
+        console.log('smt is empty')
       }
     } catch (e) {
       console.log(e);

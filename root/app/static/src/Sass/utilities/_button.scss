@@ -1,12 +1,12 @@
 .button {
   border: none;
+  cursor: pointer;
   &--submit {
     border: 1px solid $color-green-dark;
     border-radius: 3px;
     padding: 1rem;
     background-color: white;
     color: $color-green-dark;
-    cursor: pointer;
   }
   &--editor {
     font-size: 2rem;
@@ -33,6 +33,10 @@
     color: $color-green-dark;
     background-color: white;
     font-size: 2.5rem;
-    cursor:pointer;
+  }
+
+  &--disabled {
+    color: #C80815;
+    cursor: auto;
   }
 }

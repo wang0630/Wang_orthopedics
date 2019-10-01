@@ -7,7 +7,7 @@ from w3lib.url import parse_data_uri
 from boto3 import client
 from botocore.exceptions import ClientError
 from .data import input_info
-from .dbService import insert_single_doc, fetch_columns_info
+from .dbService import insert_single_doc, get_collection_count, fetch_columns_info
 
 columns = Blueprint(name='columns', import_name=__name__ , url_prefix='/columns')
 
@@ -16,10 +16,11 @@ columns = Blueprint(name='columns', import_name=__name__ , url_prefix='/columns'
 def get_columns():
   # Get query string, default to 1
   page = int(request.args.get('page', 1))
+  count = get_collection_count(app.config['MONGO_COLLECTION_COLUMN'])
   # Pagination according to the page string
   columns_info = fetch_columns_info(app.config['MONGO_COLLECTION_COLUMN'], page)
   # Retrieve columns info from db
-  return render_template('columns/columns.html', columns_info=columns_info)
+  return render_template('columns/columns.html', columns_info=columns_info, page=page, count=count)
 
 @columns.route('/editor', methods=['GET'])
 def get_editor():
@@ -42,12 +43,14 @@ def create_column():
     if (request.is_json):
       # Create object
       post = {
+        'title': request.json.get('title'),
         'author': request.json.get('author'),
         'base64s': request.json.get('base64s'),
         'content': request.json.get('content'),
       }
       try:
         post_document = {
+          'title': request.json.get('title'),
           'author': request.json.get('author'),
           'content': request.json.get('content'),
           'date': datetime.today(),
