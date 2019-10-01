@@ -1,14 +1,16 @@
 from os.path import join, dirname
 from datetime import datetime
 from uuid import uuid4
+from bson.objectid import ObjectId
 from flask import render_template, request, redirect, url_for, Blueprint, current_app as app
 from flask_login import login_required
+import werkzeug.exceptions as WE
 from w3lib.url import parse_data_uri
 from boto3 import client
 from botocore.exceptions import ClientError
 from .data import input_info
 from .dbService import fetch_columns_info
-from .dbService.helpers import insert_single_doc, get_collection_count
+from .dbService.helpers import insert_single_doc, get_collection_count, fetch_one_doc
 
 columns = Blueprint(name='columns', import_name=__name__ , url_prefix='/columns')
 
@@ -34,9 +36,21 @@ def get_editor():
 
 @columns.route('/<id>', methods=['GET'])
 def get_one_column(id):
-  render_template(
-    'columns/column_show.html'
-  )
+  if ObjectId.is_valid(id):
+    # Fetch the document
+    column_doc = fetch_one_doc(
+      app.config['MONGO_COLLECTION_COLUMN'],
+      { '_id': ObjectId(id) },
+      { '_id': 0 },
+      )
+    return render_template(
+      'columns/column_show.html',
+      column_doc=column_doc
+    )
+  else:
+    # Raise 404 directly
+    WE.abort(404)
+
 
 # API
 @columns.route('', methods=['POST'])
@@ -82,20 +96,31 @@ def create_column():
               )
               post_document['imgurl'].append(file_name)  
             else:
-              raise ValueError('The img should be jpeg or png')
+              raise WE.BadRequest('The img should be jpeg or png')
         # Insert the column into DB
         insert_single_doc(app.config['MONGO_COLLECTION_COLUMN'], post_document)
         return '', 204
       except ValueError as e:
         raise ValueError(e.args[0])
-      except ClientError as e:
-        print(e.args)
-        return e.args[0], 500
     else:
-      return 'Request should be json', 406
-  except ValueError as e:
-    return e.args[0], 400
-  except KeyError as e:
-    return e.args[0], 500
+      raise WE.NotAcceptable('Request should have MIME type of application/json')
   except Exception as e:
-    return e.args[0], 500
+    WE.abort(500)
+
+
+# Error handling
+@columns.errorhandler(WE.BadRequest)
+def bad_request(e):
+  return e.description, 400
+
+@columns.errorhandler(WE.NotFound)
+def not_found(e):
+  return 'OOPS, 找不到此頁面', 404
+
+@columns.errorhandler(WE.NotAcceptable)
+def not_acceptable(e):
+  return e.description, 406
+
+@columns.errorhandler(WE.InternalServerError)
+def internal_server_error(e):
+  return 'OOPS, 伺服器有些問題，請稍後再試！', 500
