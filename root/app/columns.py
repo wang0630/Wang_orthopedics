@@ -7,7 +7,8 @@ from w3lib.url import parse_data_uri
 from boto3 import client
 from botocore.exceptions import ClientError
 from .data import input_info
-from .dbService import insert_single_doc, get_collection_count, fetch_columns_info
+from .dbService import fetch_columns_info
+from .dbService.helpers import insert_single_doc, get_collection_count
 
 columns = Blueprint(name='columns', import_name=__name__ , url_prefix='/columns')
 
@@ -33,7 +34,9 @@ def get_editor():
 
 @columns.route('/<id>', methods=['GET'])
 def get_one_column(id):
-  pass
+  render_template(
+    'columns/column_show.html'
+  )
 
 # API
 @columns.route('', methods=['POST'])

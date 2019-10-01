@@ -18,7 +18,6 @@ def fetch_all_announcements(collection, per_page):
   announcements = list(agg)
   convert_date_to_roc(announcements)
   total_pages = ceil(len(announcements) / per_page)
-  print(announcements)
   return announcements, total_pages
 
 def fetch_columns_info(collection, page):
@@ -48,12 +47,3 @@ def fetch_columns_info(collection, page):
   columns = list(agg)
   convert_date_to_roc(columns)
   return columns
-
-
-def insert_single_doc(collection, target_doc):
-  print(target_doc)
-  result = collection.insert_one(target_doc)
-  return result.inserted_id
-
-def get_collection_count(collection):
-  return collection.estimated_document_count()

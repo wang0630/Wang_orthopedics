@@ -2,7 +2,8 @@ from flask import render_template, request, redirect, url_for, Blueprint, curren
 from flask_login import login_required, login_user, current_user
 from bson import ObjectId
 from .announcementsForm import AnnouncementsForm
-from .dbService import fetch_all_announcements, insert_single_doc
+from .dbService import fetch_all_announcements
+from .dbService.helpers import insert_single_doc
 
 announcements = Blueprint(name='announcements', import_name=__name__ , url_prefix='/announcement')
 
