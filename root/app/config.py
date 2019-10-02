@@ -19,6 +19,7 @@ class Config:
   BUCKET_COLUMN = 'wangcolumn'
   AWS_S3_KEY = os.environ.get('AWS_S3_KEY')
   AWS_S3_SECRET = os.environ.get('AWS_S3_SECRET')
+  AWS_S3_DOMAIN = os.environ.get('AWS_S3_DOMAIN')
   # Development
   ENV=os.environ.get('FLASK_ENV')
   REQUEST_IP=os.environ.get('REQUEST')

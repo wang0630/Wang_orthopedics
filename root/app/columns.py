@@ -11,6 +11,7 @@ from botocore.exceptions import ClientError
 from .data import input_info
 from .dbService import fetch_columns_info
 from .dbService.helpers import insert_single_doc, get_collection_count, fetch_one_doc
+from helpers.html_multipulate import traverse_insert_img_src
 
 columns = Blueprint(name='columns', import_name=__name__ , url_prefix='/columns')
 
@@ -45,6 +46,8 @@ def get_one_column(id):
       )
     if not column_doc:
       WE.abort(404)
+    # Traverse through the img and insert the src
+    column_doc['content'] = traverse_insert_img_src(column_doc['content'], column_doc['imgurl'], app.config['AWS_S3_DOMAIN'])
     # Mark the html as safe, so jinja2 will not escape it
     column_doc['content'] = Markup(column_doc['content'])
     return render_template(
