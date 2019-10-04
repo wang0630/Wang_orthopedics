@@ -35,7 +35,10 @@ def create_assets(app):
                                     output='js/js-editor.js'),
     'js-pagination-arrow': Bundle('js-pagination-arrow.js',
                                     filters='jsmin',
-                                    output='js/js-pagination-arrow.js'),                                       
+                                    output='js/js-pagination-arrow.js'),
+    'js-show-panel': Bundle('js-show-panel.js',
+                                    filters='jsmin',
+                                    output='js/js-show-panel.js'),                                                                       
   }
 
   assets.register(bundles)

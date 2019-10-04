@@ -1,0 +1,22 @@
+.column-show {
+  @include overall-layout(columns);
+  min-height: 100vh;
+  &__title {
+    grid-row: 1/2;
+    grid-column: center-start/center-end;
+    font-size: 3.5rem;
+    font-weight: bold;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  &__main {
+    grid-row: 2/3;
+    grid-column: center-start/center-end;
+    padding: 3rem 1.5rem;
+    font-size: 3rem;
+    line-height: 4rem;
+    border: 2px solid $color-green-dark;
+  }
+}

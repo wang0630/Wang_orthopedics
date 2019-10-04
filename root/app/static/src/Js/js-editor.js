@@ -87,7 +87,9 @@ function addSubmitHandler (ip, editorPostLimit) {
         const res = await axios.post(completeIp, data);
         console.log(res);
       } else {
-        console.log('smt is empty')
+        // show panel
+        const panel = new Panel('請確定暱稱和title都已填寫，以及文章字數大於15個字');
+        panel.showPanel();
       }
     } catch (e) {
       console.log(e);

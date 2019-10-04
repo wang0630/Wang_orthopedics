@@ -1,4 +1,12 @@
 {% extends 'base/base.html' %}
 {% block body %}
-  {{ column_doc.content }}
+  <main class="column-show">
+    <div class="column-show__title">
+      <h3> {{ column_doc.title }} </h3>
+      <h5> {{ column_doc.author }} </h5>
+    </div>
+    <article class="column-show__main">
+        {{ column_doc.content }}
+    </article>     
+  </main>
 {% endblock %}

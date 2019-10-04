@@ -34,6 +34,9 @@
   {% assets "js-editor" %}
   <script type="application/javascript" src="{{ ASSET_URL }}"></script>
   {% endassets %}
+  {% assets "js-show-panel" %}
+  <script type="application/javascript" src="{{ ASSET_URL }}" async></script>
+  {% endassets %}
   <script type="application/javascript" async>
     const ip = '{{ request_ip }}';
     const editor_post_limit = {{ editor_post_limit }};

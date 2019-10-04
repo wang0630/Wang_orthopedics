@@ -1,0 +1,17 @@
+.warning-panel {
+  height: 20%;
+  width: 40%;
+  padding: 2rem;
+  font-size: 2.5rem;
+  font-weight: 400;
+  position: absolute;
+  top: 0%;
+  left: 30%;
+  background-color: $color-green-light;
+  border: 2px solid $color-green-dark;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}

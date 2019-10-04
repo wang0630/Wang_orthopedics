@@ -7,6 +7,7 @@
 @import "utilities/input";
 @import "utilities/listing";
 @import "utilities/pagination";
+@import "utilities/panel";
 
 // General
 @import "general/header";
@@ -40,6 +41,7 @@
 
 // columns
 @import "columns/columns";
+@import "columns/column-show";
 
 // base setting
 @import "general/base";

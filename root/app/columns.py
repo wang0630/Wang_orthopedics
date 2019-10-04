@@ -112,6 +112,7 @@ def create_column():
     else:
       raise WE.NotAcceptable('Request should have MIME type of application/json')
   except Exception as e:
+    print(e)
     WE.abort(500)
 
 
@@ -130,4 +131,5 @@ def not_acceptable(e):
 
 @columns.errorhandler(WE.InternalServerError)
 def internal_server_error(e):
+  print(e.description)
   return 'OOPS, 伺服器有些問題，請稍後再試！', 500
