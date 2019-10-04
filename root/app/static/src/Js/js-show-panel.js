@@ -6,27 +6,20 @@ class Panel {
     this._btns = document.querySelectorAll('button');
   }
 
-  _toggleDisabled(element) {
-    element.disabled = !element.disabled;
-  }
-
-  _toggleContentEditable(element) {
-    if (element.hasAttribute('contentEditable')) {
-      console.log('should print')
-      element.contentEditable = !element.contentEditable;
-    } else {
-      console.log('stupid');
+  _toggleAttribute(attr) {
+    return (element) => {
+      element.toggleAttribute(attr);
     }
   }
 
   showPanel() {
     const body = document.querySelector('body');
-    const articles = document.querySelectorAll('article[contenteditable="true"]')
+    const articles = document.querySelectorAll('article')
     body.style.position = 'relative';
     // Disable article editing and inputs
-    this._inputs.forEach(this._toggleDisabled);
-    this._btns.forEach(this._toggleDisabled);
-    articles.forEach(this._toggleContentEditable);
+    this._inputs.forEach(this._toggleAttribute('disabled'));
+    this._btns.forEach(this._toggleAttribute('disabled'));
+    articles.forEach(this._toggleAttribute('contentEditable'));
     // Show warning panel
     const panel = document.createElement('div');
     panel.id = 'warning-panel';
@@ -46,11 +39,11 @@ class Panel {
   _hidePanel() {
     const panel = document.getElementById('warning-panel');
     const body = document.querySelector('body');
-    const disabledArticles = document.querySelectorAll('article[contenteditable="false"]')
+    const notEditableArticles = document.querySelectorAll('article')
     // Enable all functionalities
-    this._inputs.forEach(this._toggleDisabled);
-    this._btns.forEach(this._toggleDisabled);
-    disabledArticles.forEach(this._toggleContentEditable);
+    this._inputs.forEach(this._toggleAttribute('disabled'));
+    this._btns.forEach(this._toggleAttribute('disabled'));
+    notEditableArticles.forEach(this._toggleAttribute('contentEditable'));
     body.removeChild(panel);
   }
 }
