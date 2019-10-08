@@ -11,6 +11,7 @@ services:
     volumes:
       - ./nginx/wang.conf:/etc/nginx/conf.d/default.conf
       - ./nginx/backend.conf:/etc/nginx/backend.conf
+      - ./nginx/https.conf:/etc/nginx/https.conf
       - ./root/app/static:/home/static
     ports:
       - 80:80
