@@ -2,7 +2,7 @@ from os.path import join, dirname
 from datetime import datetime
 from uuid import uuid4
 from bson.objectid import ObjectId
-from flask import render_template, request, redirect, url_for, Blueprint, Markup,current_app as app
+from flask import render_template, request, make_response, redirect, url_for, Blueprint, Markup,current_app as app
 from flask_login import login_required
 import werkzeug.exceptions as WE
 from w3lib.url import parse_data_uri
@@ -12,6 +12,7 @@ from .data import input_info
 from .dbService import fetch_columns_info
 from .dbService.helpers import insert_single_doc, get_collection_count, fetch_one_doc
 from helpers.html_multipulate import traverse_insert_img_src
+import helpers.cookie as cookie_lib
 
 columns = Blueprint(name='columns', import_name=__name__ , url_prefix='/columns')
 
@@ -50,10 +51,13 @@ def get_one_column(id):
     column_doc['content'] = traverse_insert_img_src(column_doc['content'], column_doc['imgurl'], app.config['AWS_S3_DOMAIN'])
     # Mark the html as safe, so jinja2 will not escape it
     column_doc['content'] = Markup(column_doc['content'])
-    return render_template(
+    # Set cookie if this id is not present
+    res = make_response(render_template(
       'columns/column_show.html',
       column_doc=column_doc
-    )
+    ))
+    # cookie_lib.test_and_set_cookie(res, request.cookies.get('recent_view'), id)
+    return res
   else:
     # Raise 404 directly
     WE.abort(404)
