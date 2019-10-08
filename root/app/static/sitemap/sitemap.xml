@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc> http://www.wang-orthopedic.com/ </loc>
-    <lastmod> 2019-09-12 </lastmod>
+    <loc> https://wang-orthopedic.com/ </loc>
+    <lastmod> 2019-10-09 </lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
 
   <url>
-    <loc> http://www.wang-orthopedic.com/target </loc>
+    <loc> https://wang-orthopedic.com/target </loc>
     <lastmod> 2019-09-12 </lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc> http://www.wang-orthopedic.com/boneMassMeasurement </loc>
+    <loc> https://wang-orthopedic.com/boneMassMeasurement </loc>
     <lastmod> 2018-09-12 </lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
