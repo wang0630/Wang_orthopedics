@@ -12,7 +12,7 @@ from .data import input_info
 from .dbService import fetch_columns_info
 from .dbService.helpers import insert_single_doc, get_collection_count, fetch_one_doc
 from helpers.html_multipulate import traverse_insert_img_src
-import helpers.cookie as cookie_lib
+# import helpers.cookie as cookie_lib
 
 columns = Blueprint(name='columns', import_name=__name__ , url_prefix='/columns')
 
