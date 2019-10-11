@@ -9,7 +9,7 @@ from w3lib.url import parse_data_uri
 from boto3 import client
 from botocore.exceptions import ClientError
 from .data import input_info
-from .dbService import fetch_columns_info
+from .dbService import fetch_columns_info_by_page
 from .dbService.helpers import insert_single_doc, get_collection_count, fetch_one_doc
 from helpers.html_multipulate import traverse_insert_img_src
 import helpers.cookie as cookie_lib
@@ -23,8 +23,8 @@ def get_columns():
   page = int(request.args.get('page', 1))
   count = get_collection_count(app.config['MONGO_COLLECTION_COLUMN'])
   # Pagination according to the page string
-  columns_info = fetch_columns_info(app.config['MONGO_COLLECTION_COLUMN'], page)
-  # Retrieve columns info from db
+  columns_info = fetch_columns_info_by_page(app.config['MONGO_COLLECTION_COLUMN'], page)
+  # Retrieve columns info based on cookie
   return render_template('columns/columns.html', columns_info=columns_info, page=page, count=count)
 
 @columns.route('/editor', methods=['GET'])

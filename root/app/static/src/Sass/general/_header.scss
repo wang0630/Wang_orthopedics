@@ -33,20 +33,23 @@
     @include animation-move-down();
   }
   &__text{
-    &--ani-down{
-      @include animation-move-down();
+    &--large {
       font-weight: 400;
       font-size: 4.5rem;
       color:$color-border;
-      line-height: 3.3rem;
+      line-height: 5.5rem;
       align-self: flex-start; // let the container of text shrink
     }
-    &--ani-right{
-      @include animation-move-right();
+    &--medium {
       color:#FFF;
       font-size: 2rem;
     }
-
+    &--ani-down{
+      @include animation-move-down();
+    }
+    &--ani-right{
+      @include animation-move-right();
+    }
     &--media-info {
       display: none;
       font-weight: 400;

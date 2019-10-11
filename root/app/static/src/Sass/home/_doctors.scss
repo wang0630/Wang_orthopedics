@@ -26,7 +26,9 @@
     display: grid;
     grid-template-rows: 3fr 2fr;
     grid-template-columns: 1fr 1fr;
-    font-size:3rem;
+    font-size: 3rem;
+    font-weight: 400;
+    background-color: $color-grey-light;
 
     &__imgcontainer{
       grid-row:1/2;
@@ -57,7 +59,6 @@
       z-index: 999;
     }
     &__ex{
-      background-color: #fff;
       font-size:2.5rem;
       grid-row: 2/3;
       grid-column: 1/4;

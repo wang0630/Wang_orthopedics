@@ -17,7 +17,6 @@
       }
     }
     &__list{
-      font-weight: 300;
       color:#fff;
       font-size:3rem;
       display: flex;
@@ -51,7 +50,6 @@
         margin-right:2rem;
         // make it red
         li:last-child{
-          font-weight: 300;
           color:rgb(172, 37, 37);
         }
       }
