@@ -26,7 +26,7 @@
       font-size: 3rem;
       line-height: 150%; // according to current font-size
 
-      position: relative; // For close btn in login-main.html
+      position: relative; // For close btn in login-main.jinja2
       &__heading {
         display: flex;
         font-size: 1.8rem;
@@ -41,7 +41,7 @@
         word-break: break-all;
       }
 
-      // Only used in login-main.html
+      // Only used in login-main.jinja2
       &__close {
         position: absolute;
         top: 7%;

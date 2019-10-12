@@ -1,6 +1,6 @@
-{% from 'macro/input-group.html' import input_group %}
-{% from 'macro/buttons.html' import button_submit  %}
-{% extends 'base/base.html' %}
+{% from 'macro/input-group.jinja2' import input_group %}
+{% from 'macro/buttons.jinja2' import button_submit  %}
+{% extends 'base/base.jinja2' %}
 {% block head %}
   {{ super() }}
   <script src="https://unpkg.com/axios/dist/axios.min.js" async></script>

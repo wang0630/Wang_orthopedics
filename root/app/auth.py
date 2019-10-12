@@ -21,7 +21,7 @@ def login_main():
     fetch_all_announcements(app.config['MONGO_COLLECTION_ANNOUNCEMENT'], app.config['AC_PER_PAGE'])
 
   return render_template(
-    'login/loginMain.html',
+    'login/loginMain.jinja2',
     form=form,
     ac_per_page=app.config['AC_PER_PAGE'],
     announcements=announcements,
@@ -44,13 +44,13 @@ def login():
       print(f"current_user.get_id(): {idd}")
       return redirect(url_for('.login_main'))
     else:
-      return render_template('login/loginForm.html', form=form, error_msgs=error_msgs)
+      return render_template('login/loginForm.jinja2', form=form, error_msgs=error_msgs)
   else: # post request
     if not form.validate_on_submit():
       # All fields must be validated when submit btn is clicked
       # Or the method is get
-      # simply return loginForm.html
-      return render_template('login/loginForm.html', form=form, error_msgs=error_msgs)
+      # simply return loginForm.jinja2
+      return render_template('login/loginForm.jinja2', form=form, error_msgs=error_msgs)
 
     # Fetch the db to get the admini
     admini_doc = app.config['MONGO_COLLECTION_ADMINI'].find_one({'username': form.username.data})
@@ -62,7 +62,7 @@ def login():
       # Flash the message
       # Because flashed messages are for the next request
       error_msgs.append(u'帳號或密碼錯誤，請重新輸入')
-      return render_template('login/loginForm.html', form=form, error_msgs=error_msgs)
+      return render_template('login/loginForm.jinja2', form=form, error_msgs=error_msgs)
     
     admini_obj = Admini(admini_doc['username'])
     # Login the user

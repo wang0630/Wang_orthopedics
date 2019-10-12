@@ -1,12 +1,12 @@
-{% extends "base/base.html" %}
+{% extends "base/base.jinja2" %}
 {% block head %}
   {{ super() }}
   <script src="https://unpkg.com/axios/dist/axios.min.js" async></script>
 {% endblock %}
 {% block body %}
   <section class="login-main">
-    {% include "components/announcement.html" %}
-    {% include "login/announcementsForm.html" %}
+    {% include "components/announcement.jinja2" %}
+    {% include "login/announcementsForm.jinja2" %}
   </section>
 {% endblock %}
 

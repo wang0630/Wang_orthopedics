@@ -11,7 +11,7 @@ from botocore.exceptions import ClientError
 from .data import input_info
 from .dbService import fetch_columns_info_by_page
 from .dbService.helpers import insert_single_doc, get_collection_count, fetch_one_doc, fetch_docs
-from helpers.html_multipulate import traverse_insert_img_src
+from helpers.jinja2_multipulate import traverse_insert_img_src
 import helpers.cookie as cookie_lib
 
 columns = Blueprint(name='columns', import_name=__name__ , url_prefix='/columns')
@@ -46,7 +46,7 @@ def get_columns():
 @columns.route('/editor', methods=['GET'])
 def get_editor():
   return render_template(
-    'editor/editor.html',
+    'editor/editor.jinja2',
     input_info=input_info,
     request_ip=app.config['REQUEST_IP'],
     editor_post_limit=app.config['EDITOR_POST_LIMIT']

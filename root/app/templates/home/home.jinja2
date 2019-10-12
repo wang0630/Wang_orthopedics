@@ -1,4 +1,4 @@
-{% extends "base/base.html" %}
+{% extends "base/base.jinja2" %}
 
 {% block head %}
   {{ super() }}
@@ -6,13 +6,13 @@
 
 {% block body %}
   <main class="main">
-    {% include "general/header.html" %}
-    {% include "components/announcement.html" %}
-    {% include "components/info.html" %}
-    {% include "components/timetable.html" %}
-    {% include "components/doctors.html" %}
-    {% include "components/facility.html" %}
-    {% include "general/footer.html" %}
+    {% include "general/header.jinja2" %}
+    {% include "components/announcement.jinja2" %}
+    {% include "components/info.jinja2" %}
+    {% include "components/timetable.jinja2" %}
+    {% include "components/doctors.jinja2" %}
+    {% include "components/facility.jinja2" %}
+    {% include "general/footer.jinja2" %}
   </main>
 {% endblock %}
 

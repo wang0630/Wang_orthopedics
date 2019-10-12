@@ -31,7 +31,7 @@ def post():
       fetch_all_announcements(app.config['MONGO_COLLECTION_ANNOUNCEMENT'], app.config['AC_PER_PAGE'])
     # Bad request, return template with error_msgs
     return render_template(
-        'login/loginMain.html',
+        'login/loginMain.jinja2',
         form=form,
         ac_per_page=app.config['AC_PER_PAGE'],
         announcements=announcements,
