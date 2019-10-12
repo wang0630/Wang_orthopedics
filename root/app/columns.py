@@ -10,7 +10,7 @@ from boto3 import client
 from botocore.exceptions import ClientError
 from .data import input_info
 from .dbService import fetch_columns_info_by_page
-from .dbService.helpers import insert_single_doc, get_collection_count, fetch_one_doc
+from .dbService.helpers import insert_single_doc, get_collection_count, fetch_one_doc, fetch_docs
 from helpers.html_multipulate import traverse_insert_img_src
 import helpers.cookie as cookie_lib
 
@@ -21,11 +21,27 @@ columns = Blueprint(name='columns', import_name=__name__ , url_prefix='/columns'
 def get_columns():
   # Get query string, default to 1
   page = int(request.args.get('page', 1))
+  # One page has 4 Columns
+  per_page = 4
   count = get_collection_count(app.config['MONGO_COLLECTION_COLUMN'])
   # Pagination according to the page string
-  columns_info = fetch_columns_info_by_page(app.config['MONGO_COLLECTION_COLUMN'], page)
-  # Retrieve columns info based on cookie
-  return render_template('columns/columns.html', columns_info=columns_info, page=page, count=count)
+  columns_info = fetch_columns_info_by_page(app.config['MONGO_COLLECTION_COLUMN'], page, per_page)
+  # Fetch name and author by cookie
+  cookie = request.cookies.get('recent_view')
+  recent_view_info = []
+  if cookie:
+    cookie_list = [ ObjectId(_id) for _id in cookie.split('&')]
+    recent_view_info = fetch_docs(
+      app.config['MONGO_COLLECTION_COLUMN'],
+      { '_id': { '$in': cookie_list } },
+      { 'content': 0, 'imgurl': 0, 'date': 0 },
+    )
+  pagination_info = {
+    'current_page': page,
+    'count': count,
+    'per_page': per_page,
+  }
+  return render_template('columns/columns.jinja2', columns_info=columns_info, recent_view_info=recent_view_info, pagination_info=pagination_info)
 
 @columns.route('/editor', methods=['GET'])
 def get_editor():
@@ -53,7 +69,7 @@ def get_one_column(id):
     column_doc['content'] = Markup(column_doc['content'])
     # Set cookie if this id is not present
     res = make_response(render_template(
-      'columns/column_show.html',
+      'columns/column_show.jinja2',
       column_doc=column_doc
     ))
     cookie_lib.test_and_set_cookie(res, request.cookies.get('recent_view'), id)

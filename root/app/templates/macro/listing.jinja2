@@ -1,0 +1,42 @@
+{% macro columnItem(title, author, date, id) %}
+  <li class="columns__item">
+    <a href="{{ '/columns/' + id }}"> {{ title }} </a>
+    <span> {{ author }} </span>
+    <span> {{ date }}  </span>
+  </li>
+{% endmacro %}
+
+{% macro columnItemSimple(title, author, id) %}
+{% endmacro %}
+
+{% macro pagination(info) %}
+  <div class="pagination">
+    {% if info.current_page > 1 %}
+      <button type="button" class="button button--arrow" id="previous"> 上一頁 &larr; </button>
+    {% else %}
+      <button type="button" class="button button--arrow button--disabled" disabled> 此為最上頁 </button>
+    {% endif %}
+
+    {% if info.current_page * info.per_page < info.count %}
+      <button type="button" class="button button--arrow" id="next"> 下一頁 &rarr; </button>
+    {% else %}
+      <button type="button" class="button button--arrow button--disabled" disabled> 此為最下頁 </button>
+    {% endif %}
+  </div>  
+{% endmacro %}
+
+
+{% macro listing(title, category, targets, wrapper_classes=[], pagination_info={}) %}
+{% set classes = ['list-items-column-large'] %}
+  <section class="{{ classes | concat_lists(wrapper_classes) | join(' ') }}">
+    <h3> {{ title }} </h3>
+    <ol class="list-items-column-large__ol">
+      {% for target in targets %}
+        {{ caller(target) }}
+      {% endfor %}
+    </ol>
+    {% if pagination_info %}
+      {{ pagination(pagination_info) }}
+    {% endif %}
+  </section>
+{% endmacro %}

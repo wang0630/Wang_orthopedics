@@ -8,5 +8,8 @@ def get_collection_count(collection):
 
 def fetch_one_doc(collection, filter, projection={}):
   result = collection.find_one(filter, projection)
-  print(result)
   return result
+
+def fetch_docs(collection, filter, projection={}):
+  result = collection.find(filter, projection)
+  return list(result)

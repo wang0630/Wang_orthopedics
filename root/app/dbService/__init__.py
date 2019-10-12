@@ -20,8 +20,7 @@ def fetch_all_announcements(collection, per_page):
   total_pages = ceil(len(announcements) / per_page)
   return announcements, total_pages
 
-def fetch_columns_info_by_page(collection, page):
-  PER_PAGE = 4
+def fetch_columns_info_by_page(collection, page, PER_PAGE):
   agg = collection.aggregate([
     {
       '$skip': PER_PAGE * (page - 1)

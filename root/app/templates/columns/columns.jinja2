@@ -1,0 +1,25 @@
+{% from 'macro/listing.jinja2' import listing, columnItem %}
+{% extends 'base/base.html' %}
+{% block body %}
+  <main class="columns">
+    <ul class="columns__recently-viewed list-items-column-small">
+      {% for r in recent_view_info %}
+        <div> {{ r._id }} </div>
+      {% endfor %}
+    </ul>
+    {#
+      We pass a macro to another macro by using special call()
+      We call listing() and pass columns_info into it
+      Then we pass columnItem as children of listing()
+    #}
+    {% call(target) listing('醫學新知' ,'columns', columns_info, ['columns__main'], pagination_info) %}
+      {{ columnItem(target.title, target.author, target.date, target.id) }}
+    {% endcall %}
+  </main>
+{% endblock %}
+{% block myScript %}
+  {% assets "js-pagination-arrow" %}
+  <script type="application/javascript" src="{{ ASSET_URL }}"></script>
+  {% endassets %}
+{% endblock %}
+ 
