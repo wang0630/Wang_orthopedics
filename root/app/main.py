@@ -13,7 +13,7 @@ def home():
   announcements = list(app.config['MONGO_COLLECTION_ANNOUNCEMENT'].find({}, {'_id': False}).sort('date', -1))
   # Page the list per 4 announcements
   total_pages =  ceil(len(announcements) / AC_PER_PAGE)
-  res = make_response(render_template("home/home.jinja2", ac_per_page=AC_PER_PAGE, announcements=announcements, total_pages=total_pages, PTList=PTList, imglist=imglist, metacontent=u"汪骨外科診所為大北門地區第一間骨外科診所，旨在提供病患最有效的骨外科治療，本網站提供我們的看診時間，服務項目以及最新公告。"))
+  res = make_response(render_template("home/home.jinja2", ac_per_page=AC_PER_PAGE, announcements=announcements, total_pages=total_pages, PTList=PTList, imglist=imglist, metacontent=u"佳里汪骨外科診所為大北門地區第一間骨外科診所，本網站提供汪骨外科看診時間，最新公告以及地址。"))
   res.headers['Link'] = '</static/img/front.jpg>; as=image; rel=preload, </static/img/map.png>; as=image; rel=preload'
   return res
 
