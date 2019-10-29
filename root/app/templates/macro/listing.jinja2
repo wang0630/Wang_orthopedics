@@ -6,7 +6,13 @@
   </li>
 {% endmacro %}
 
+
+
 {% macro columnItemSimple(title, author, id) %}
+  <li class="columns__item">
+    <a href="{{ '/columns/' + id }}"> {{ title }} </a>
+    <span> {{ author }} </span>
+  </li>
 {% endmacro %}
 
 {% macro pagination(info) %}
@@ -27,7 +33,7 @@
 
 
 {% macro listing(title, category, targets, wrapper_classes=[], pagination_info={}) %}
-{% set classes = ['list-items-column-large'] %}
+{% set classes = ['list-items-large'] %}
   <section class="{{ classes | concat_lists(wrapper_classes) | join(' ') }}">
     <h3> {{ title }} </h3>
     <ol class="list-items-column-large__ol">

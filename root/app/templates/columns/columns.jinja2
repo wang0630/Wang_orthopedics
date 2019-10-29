@@ -1,11 +1,11 @@
-{% from 'macro/listing.jinja2' import listing, columnItem %}
+{% from 'macro/listing.jinja2' import listing, columnItem, columnItemSimple %}
 {% extends 'base/base.jinja2' %}
 {% block body %}
   <main class="columns">
-    <ul class="columns__recently-viewed list-items-column-small">
-      {% for r in recent_view_info %}
-        <div> {{ r._id }} </div>
-      {% endfor %}
+    <ul class="columns__recently-viewed list-items-small">
+      {% call(target) listing('最近瀏覽的', 'columns', recent_view_info) %}
+        {{ columnItemSimple(target.title, target.author, target._id) }}
+      {% endcall %}
     </ul>
     {#
       We pass a macro to another macro by using special call()

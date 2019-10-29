@@ -11,7 +11,7 @@ from botocore.exceptions import ClientError
 from .data import input_info
 from .dbService import fetch_columns_info_by_page
 from .dbService.helpers import insert_single_doc, get_collection_count, fetch_one_doc, fetch_docs
-from helpers.jinja2_multipulate import traverse_insert_img_src
+from helpers.html_multipulate import traverse_insert_img_src
 import helpers.cookie as cookie_lib
 
 columns = Blueprint(name='columns', import_name=__name__ , url_prefix='/columns')
@@ -36,6 +36,8 @@ def get_columns():
       { '_id': { '$in': cookie_list } },
       { 'content': 0, 'imgurl': 0, 'date': 0 },
     )
+    for r in recent_view_info:
+      r['_id'] = str(r['_id'])
   pagination_info = {
     'current_page': page,
     'count': count,

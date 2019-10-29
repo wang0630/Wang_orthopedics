@@ -19,11 +19,11 @@ def home():
 
 @main.route("/target")
 def target():
-  return render_template("home/targetpage.jinja2", targetList=targetList, metacontent=u"汪骨外科診所的主治項目．") 
+  return render_template("home/targetpage.jinja2", targetList=targetList, metacontent=u"汪骨外科診所的主治項目。") 
 
 @main.route("/boneMassMeasurement")
 def boneMassMeasurement():
-  return render_template("home/boneMassMeasurement.jinja2", bonelist=bonelist, metacontent=u"汪骨外科診所提供的骨質密度檢測．")
+  return render_template("home/boneMassMeasurement.jinja2", bonelist=bonelist, metacontent=u"汪骨外科診所提供的骨質密度檢測。")
 
 @main.route("/google8029c7599236ab79.jinja2")
 def comfirm():
