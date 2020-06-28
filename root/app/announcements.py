@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for, Blueprint, current_app as app
+from flask import render_template, request, redirect, url_for, Blueprint, make_response, current_app as app
 from flask_login import login_required, login_user, current_user
 from bson import ObjectId
 from .announcementsForm import AnnouncementsForm
@@ -7,14 +7,14 @@ from .dbService.helpers import insert_single_doc
 
 announcements = Blueprint(name='announcements', import_name=__name__ , url_prefix='/announcement')
 
-@announcements.route('/<id>', methods=['DELETE'])
+@announcements.route('/<id>', methods=['OPTIONS', 'DELETE'])
 @login_required
 def deletion(id):
   objId = ObjectId(id)
   deleted = app.config['MONGO_COLLECTION_ANNOUNCEMENT'].find_one_and_delete({ '_id': objId })
-  # print(id)
   if deleted:
-    return 'Deletion succeeds', 200
+    res = make_response('', 204)
+    return res
   else:
     return 'Deletion fails, query not found', 404
 
@@ -54,10 +54,15 @@ def post():
 # @announcements.before_request
 # @login_required
 # def before_request(res):
-#   if request.method == 'OPTIONS':
-#     header = res.header
-#     print(f'Original header: {header}')
-#     header['Access-Control-Allow-Methods'] = ['GET', 'POST', 'DELETE']
+# if request.method == 'OPTIONS':
+#     res = make_response('', 204)
+#     header = res.headers
+#     app.logger.info(f'hello')
+#     header['Access-Control-Allow-Methods'] = 'GET, POST, DELETE'
 #     header['Access-Control-Allow-Headers'] = '*'
-  
-#   return res
+#     if app.config['ENV'] == 'development':
+#       header['Access-Control-Allow-Origin'] = 'http://localhost'
+#     else:
+#       header['Access-Control-Allow-Origin'] = 'https://wang-orthopedics.com'
+#     header['Vary'] = 'Origin'
+#     return res

@@ -20,7 +20,7 @@
     grid-template-rows: 80vh repeat($componentsCountWithoutMedia, min-content);
   } @else if $page == "login-main"{
     // For login main page
-    grid-template-rows: minmax(65vh, min-content) 35vh;
+    grid-template-rows: minmax(45vh, min-content) minmax(40vh, min-content);
   } @else if $page == "editor" {
 
   } @else if $page == "columns" {

@@ -21,7 +21,6 @@ def create_app():
   # Import config after the dotenv
   from .config import Config
 
-  # app.logger.info(os.environ)
   app.config.from_object(Config)
 
   lm.init_app(app)

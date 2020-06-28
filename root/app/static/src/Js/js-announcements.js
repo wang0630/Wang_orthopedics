@@ -12,13 +12,14 @@ class AnnouncementsOperation {
           // const url = 'http://127.0.0.1' + '/announcement/' + targetId;
           const url = `${this._ip}/announcement/${targetId}`;
           const res = await axios.delete(url);
+          window.location.reload(true);
         } catch(e) {
           console.log(e);
         }
-        setTimeout(() => {
-          // Reload the page
-          window.location.reload(true);
-        }, 1000);
+        // setTimeout(() => {
+        //   // Reload the page
+        //   window.location.reload(true);
+        // }, 1000);
       }
     }
 }

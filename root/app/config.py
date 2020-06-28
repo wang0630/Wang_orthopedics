@@ -23,4 +23,3 @@ class Config:
   # Development
   ENV=os.environ.get('FLASK_ENV')
   REQUEST_IP=os.environ.get('REQUEST')
-  

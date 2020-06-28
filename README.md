@@ -18,4 +18,9 @@ A websit built with Flask, jinja2, mongodb and docker.
 3. ```pip3 install -r requirements.txt ``` to install all dependcenies
 4. ```python3 run.py ``` to run the server
 ### New way
-Simply ```docker-compose -f docker-compose.dev.yml up -d --force-recreate```
+1. Should create ```mongodata``` folder first for mongodb to connect
+2. Simply ```docker-compose -f docker-compose.dev.yml up -d --force-recreate```
+
+
+todo:
+1. show kicked out message to user if not logged in

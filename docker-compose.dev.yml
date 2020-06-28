@@ -36,6 +36,7 @@ services:
   db:
     image: mongo:latest
     container_name: wang-db-dev
+    restart: on-failure
     networks:
       with-mongo:
         aliases:

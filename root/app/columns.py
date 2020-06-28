@@ -46,6 +46,7 @@ def get_columns():
   return render_template('columns/columns.jinja2', columns_info=columns_info, recent_view_info=recent_view_info, pagination_info=pagination_info)
 
 @columns.route('/editor', methods=['GET'])
+@login_required
 def get_editor():
   return render_template(
     'editor/editor.jinja2',

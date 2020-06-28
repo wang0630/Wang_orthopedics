@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for, Blueprint, current_app as app
+from flask import render_template, request, redirect, url_for, get_flashed_messages, Blueprint, current_app as app
 from flask_login import login_required, login_user, current_user
 from . import lm
 from .admini import Admini
@@ -8,12 +8,10 @@ from .dbService import fetch_all_announcements
 
 auth = Blueprint('auth', __name__)
 
-# main login page
-# must loggin to see the page
-@auth.route('/loginMain', methods=['GET'])
+# main login page, default to announcement page
+@auth.route('/login-main', methods=['GET'])
 @login_required
 def login_main():
-  app.logger.info(request.cookies)
   form = AnnouncementsForm()
   # Fetch existing announcement from db
   # transform Objectid to string
@@ -34,14 +32,14 @@ def login_main():
 def login():
   # Create the form
   form = LoginForm()
-  error_msgs = []
+  # If someone tries to access protected route, get_flashed_messages() will get the warning
+  error_msgs = get_flashed_messages()
   # current_user is a proxy for current login user
   # it will be an anonymous user if he is not logged in
   # anonymous user will return None when get_id() is called
   idd = current_user.get_id()
   if request.method == 'GET':
     if idd:
-      print(f"current_user.get_id(): {idd}")
       return redirect(url_for('.login_main'))
     else:
       return render_template('login/loginForm.jinja2', form=form, error_msgs=error_msgs)
@@ -54,7 +52,6 @@ def login():
 
     # Fetch the db to get the admini
     admini_doc = app.config['MONGO_COLLECTION_ADMINI'].find_one({'username': form.username.data})
-    print(f"find a admini {admini_doc}")
 
     # Check if admini exists and the password
     if not admini_doc or not Admini.validate_password(admini_doc['password'], form.password.data):
