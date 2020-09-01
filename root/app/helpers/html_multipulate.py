@@ -2,7 +2,7 @@ import re
 
 def traverse_insert_img_src(html, imgurl, s3domain):
   if not imgurl:
-    return
+    return html
   counter = 0
   # Function returns the replacement string
   def replace_func(match):

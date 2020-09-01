@@ -47,22 +47,3 @@ def post():
     }
     insert_single_doc(app.config['MONGO_COLLECTION_ANNOUNCEMENT'], announcement)
     return redirect(url_for('auth.login_main'))
-
-
-
-# For preflight aka CORS
-# @announcements.before_request
-# @login_required
-# def before_request(res):
-# if request.method == 'OPTIONS':
-#     res = make_response('', 204)
-#     header = res.headers
-#     app.logger.info(f'hello')
-#     header['Access-Control-Allow-Methods'] = 'GET, POST, DELETE'
-#     header['Access-Control-Allow-Headers'] = '*'
-#     if app.config['ENV'] == 'development':
-#       header['Access-Control-Allow-Origin'] = 'http://localhost'
-#     else:
-#       header['Access-Control-Allow-Origin'] = 'https://wang-orthopedics.com'
-#     header['Vary'] = 'Origin'
-#     return res

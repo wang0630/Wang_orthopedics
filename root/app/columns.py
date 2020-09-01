@@ -66,10 +66,13 @@ def get_one_column(id):
       )
     if not column_doc:
       WE.abort(404)
+    app.logger.info(f'Origin: {column_doc["content"]}')
     # Traverse through the img and insert the src
     column_doc['content'] = traverse_insert_img_src(column_doc['content'], column_doc['imgurl'], app.config['AWS_S3_DOMAIN'])
     # Mark the html as safe, so jinja2 will not escape it
+    app.logger.info(f'Original: {column_doc["content"]}')
     column_doc['content'] = Markup(column_doc['content'])
+    app.logger.info(column_doc['content'])
     # Set cookie if this id is not present
     res = make_response(render_template(
       'columns/column_show.jinja2',
